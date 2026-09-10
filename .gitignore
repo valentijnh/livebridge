@@ -7,3 +7,6 @@ dist/
 build/
 .DS_Store
 config.local.json
+.livebridge_work/
+# token-bearing config written by install.py in the developer (symlink) setup
+remote_script/LiveBridge/config.json

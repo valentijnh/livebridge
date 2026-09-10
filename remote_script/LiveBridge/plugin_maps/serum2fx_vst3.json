@@ -1,0 +1,2938 @@
+{
+ "plugin": "Serum 2 FX",
+ "vendor": "Xfer Records",
+ "format": "VST3",
+ "class_id": "56534558667351736572756D20322066",
+ "plugin_version": "2.1.5",
+ "scheme": "block * 1000000 + instance * 1000 + index",
+ "source": "probed on Ableton Live 12.4.5 (macOS) with plugin_racks.map (27 loads, 2939 ids), 2026-09-10",
+ "count": 541,
+ "plugin_parameter_count": 2623,
+ "skipped": "2082 VST3 MIDI-mapping proxies (CCn Chan m, Pitch Bend Chan n, Aftertouch Chan n) and their trailing Mod Wheel / Pitch Bend",
+ "notes": [
+  "Serum 2 FX lists the same 541 parameters with the same ParameterIds as Serum 2 (verified).",
+  "No template state: an exposed Serum 2 FX starts from the plug-in's default state unless preset_file is given.",
+  "FX Main/Bus Param 1..16 are Serum 2's generic FX-rack slots; what they control depends on the FX modules loaded in the patch."
+ ],
+ "groups": {
+  "global": [
+   "Main Vol",
+   "Main Tuning",
+   "Amp",
+   "Porta Time",
+   "Porta Curve",
+   "Bend Up",
+   "Bend Down",
+   "Mono Toggle",
+   "Legato",
+   "Porta Always",
+   "Porta Scaled",
+   "Swing",
+   "Swing Div",
+   "Transpose",
+   "Direct Vol",
+   "Bus 1 Vol",
+   "Bus 2 Vol"
+  ],
+  "osc": [
+   "A Enable",
+   "A Level",
+   "A Pan",
+   "A Octave",
+   "A Semi",
+   "A Fine",
+   "A WT Pos",
+   "A Warp",
+   "A Warp 2",
+   "A Unison",
+   "A Uni Detune",
+   "A Uni Blend",
+   "B Enable",
+   "B Level",
+   "B Pan",
+   "B Octave",
+   "B Semi",
+   "B Fine",
+   "B WT Pos",
+   "B Warp",
+   "B Warp 2",
+   "B Unison",
+   "B Uni Detune",
+   "B Uni Blend",
+   "C Enable",
+   "C Level",
+   "C Pan",
+   "C Octave",
+   "C Semi",
+   "C Fine",
+   "C WT Pos",
+   "C Warp",
+   "C Warp 2",
+   "C Unison",
+   "C Uni Detune",
+   "C Uni Blend",
+   "Noise Enable",
+   "Noise Level",
+   "Noise Pitch",
+   "Sub Enable",
+   "Sub Level",
+   "Sub Octave"
+  ],
+  "osc a": [
+   "A Enable",
+   "A Level",
+   "A Pan",
+   "A Octave",
+   "A Semi",
+   "A Fine",
+   "A Ratio",
+   "A Hz Offset",
+   "A Coarse Pitch",
+   "A Pitch Track",
+   "A Start",
+   "A End",
+   "A Reverse",
+   "A Scan Rate",
+   "A Scan BPM Rate",
+   "A Scan Key Track",
+   "A Position",
+   "A Loop Start",
+   "A Loop End",
+   "A Loop X-Fade",
+   "A Loop Mode",
+   "A Relative Loop",
+   "A Single Slice",
+   "A Slice Play Mode",
+   "A Unison",
+   "A Uni Stack",
+   "A Uni Detune",
+   "A Uni Blend",
+   "A Uni Width",
+   "A Uni Span",
+   "A Uni Rand Start",
+   "A Uni Warp",
+   "A Uni Warp 2",
+   "A Warp",
+   "A Warp Var",
+   "A Warp Mode",
+   "A Warp 2",
+   "A Warp 2 Var",
+   "A Warp 2 Mode",
+   "A WT Pos",
+   "A Uni WT Pos",
+   "A Phase",
+   "A Rand Phase"
+  ],
+  "osc b": [
+   "B Enable",
+   "B Level",
+   "B Pan",
+   "B Octave",
+   "B Semi",
+   "B Fine",
+   "B Ratio",
+   "B Hz Offset",
+   "B Coarse Pitch",
+   "B Pitch Track",
+   "B Start",
+   "B End",
+   "B Reverse",
+   "B Scan Rate",
+   "B Scan BPM Rate",
+   "B Scan Key Track",
+   "B Position",
+   "B Loop Start",
+   "B Loop End",
+   "B Loop X-Fade",
+   "B Loop Mode",
+   "B Relative Loop",
+   "B Single Slice",
+   "B Slice Play Mode",
+   "B Unison",
+   "B Uni Stack",
+   "B Uni Detune",
+   "B Uni Blend",
+   "B Uni Width",
+   "B Uni Span",
+   "B Uni Rand Start",
+   "B Uni Warp",
+   "B Uni Warp 2",
+   "B Warp",
+   "B Warp Var",
+   "B Warp Mode",
+   "B Warp 2",
+   "B Warp 2 Var",
+   "B Warp 2 Mode",
+   "B WT Pos",
+   "B Uni WT Pos",
+   "B Phase",
+   "B Rand Phase"
+  ],
+  "osc c": [
+   "C Enable",
+   "C Level",
+   "C Pan",
+   "C Octave",
+   "C Semi",
+   "C Fine",
+   "C Ratio",
+   "C Hz Offset",
+   "C Coarse Pitch",
+   "C Pitch Track",
+   "C Start",
+   "C End",
+   "C Reverse",
+   "C Scan Rate",
+   "C Scan BPM Rate",
+   "C Scan Key Track",
+   "C Position",
+   "C Loop Start",
+   "C Loop End",
+   "C Loop X-Fade",
+   "C Loop Mode",
+   "C Relative Loop",
+   "C Single Slice",
+   "C Slice Play Mode",
+   "C Unison",
+   "C Uni Stack",
+   "C Uni Detune",
+   "C Uni Blend",
+   "C Uni Width",
+   "C Uni Span",
+   "C Uni Rand Start",
+   "C Uni Warp",
+   "C Uni Warp 2",
+   "C Warp",
+   "C Warp Var",
+   "C Warp Mode",
+   "C Warp 2",
+   "C Warp 2 Var",
+   "C Warp 2 Mode",
+   "C WT Pos",
+   "C Uni WT Pos",
+   "C Phase",
+   "C Rand Phase"
+  ],
+  "sub": [
+   "Sub Enable",
+   "Sub Level",
+   "Sub Pan",
+   "Sub Octave",
+   "Sub Coarse Pitch",
+   "Sub Pitch Track",
+   "Sub Shape",
+   "Sub Phase",
+   "Sub Cont. Phase",
+   "Sub Osc>Filter Balance",
+   "Sub Osc>BUS1",
+   "Sub Osc>BUS2"
+  ],
+  "noise": [
+   "Noise Enable",
+   "Noise Level",
+   "Noise Pan",
+   "Noise Pitch Track",
+   "Noise Pitch",
+   "Noise Fine",
+   "Noise Phase",
+   "Noise Rand Phase"
+  ],
+  "filter": [
+   "Filter 1 Level",
+   "Filter 1 On",
+   "Filter 1 Type",
+   "Filter 1 Freq",
+   "Filter 1 Res",
+   "Filter 1 Drive",
+   "Filter 1 Var",
+   "Filter 1 Wet",
+   "Filter 1 Stereo",
+   "Filter 1 X",
+   "Filter 1 Y",
+   "Filter 2 Level",
+   "Filter 2 On",
+   "Filter 2 Type",
+   "Filter 2 Freq",
+   "Filter 2 Res",
+   "Filter 2 Drive",
+   "Filter 2 Var",
+   "Filter 2 Wet",
+   "Filter 2 Stereo",
+   "Filter 2 X",
+   "Filter 2 Y"
+  ],
+  "filter 1": [
+   "Filter 1 Level",
+   "Filter 1 On",
+   "Filter 1 Type",
+   "Filter 1 Freq",
+   "Filter 1 Res",
+   "Filter 1 Drive",
+   "Filter 1 Var",
+   "Filter 1 Wet",
+   "Filter 1 Stereo",
+   "Filter 1 X",
+   "Filter 1 Y"
+  ],
+  "filter 2": [
+   "Filter 2 Level",
+   "Filter 2 On",
+   "Filter 2 Type",
+   "Filter 2 Freq",
+   "Filter 2 Res",
+   "Filter 2 Drive",
+   "Filter 2 Var",
+   "Filter 2 Wet",
+   "Filter 2 Stereo",
+   "Filter 2 X",
+   "Filter 2 Y"
+  ],
+  "env": [
+   "Env 1 Attack",
+   "Env 1 Hold",
+   "Env 1 Decay",
+   "Env 1 Sustain",
+   "Env 1 Release",
+   "Env 1 Atk Curve",
+   "Env 1 Dec Curve",
+   "Env 1 Rel Curve",
+   "Env 2 Attack",
+   "Env 2 Hold",
+   "Env 2 Decay",
+   "Env 2 Sustain",
+   "Env 2 Release",
+   "Env 2 Atk Curve",
+   "Env 2 Dec Curve",
+   "Env 2 Rel Curve",
+   "Env 2 Start",
+   "Env 2 End",
+   "Env 3 Attack",
+   "Env 3 Hold",
+   "Env 3 Decay",
+   "Env 3 Sustain",
+   "Env 3 Release",
+   "Env 3 Atk Curve",
+   "Env 3 Dec Curve",
+   "Env 3 Rel Curve",
+   "Env 3 Start",
+   "Env 3 End",
+   "Env 4 Attack",
+   "Env 4 Hold",
+   "Env 4 Decay",
+   "Env 4 Sustain",
+   "Env 4 Release",
+   "Env 4 Atk Curve",
+   "Env 4 Dec Curve",
+   "Env 4 Rel Curve",
+   "Env 4 Start",
+   "Env 4 End",
+   "Env Rand"
+  ],
+  "lfo": [
+   "LFO 1 Rate",
+   "LFO 1 Smooth",
+   "LFO 1 Rise",
+   "LFO 1 Delay",
+   "LFO 1 Phase",
+   "LFO 2 Rate",
+   "LFO 2 Smooth",
+   "LFO 2 Rise",
+   "LFO 2 Delay",
+   "LFO 2 Phase",
+   "LFO 3 Rate",
+   "LFO 3 Smooth",
+   "LFO 3 Rise",
+   "LFO 3 Delay",
+   "LFO 3 Phase",
+   "LFO 4 Rate",
+   "LFO 4 Smooth",
+   "LFO 4 Rise",
+   "LFO 4 Delay",
+   "LFO 4 Phase",
+   "LFO 5 Rate",
+   "LFO 5 Smooth",
+   "LFO 5 Rise",
+   "LFO 5 Delay",
+   "LFO 5 Phase",
+   "LFO 6 Rate",
+   "LFO 6 Smooth",
+   "LFO 6 Rise",
+   "LFO 6 Delay",
+   "LFO 6 Phase",
+   "LFO 7 Rate",
+   "LFO 7 Smooth",
+   "LFO 7 Rise",
+   "LFO 7 Delay",
+   "LFO 7 Phase",
+   "LFO 8 Rate",
+   "LFO 8 Smooth",
+   "LFO 8 Rise",
+   "LFO 8 Delay",
+   "LFO 8 Phase",
+   "LFO 9 Rate",
+   "LFO 9 Smooth",
+   "LFO 9 Rise",
+   "LFO 9 Delay",
+   "LFO 9 Phase",
+   "LFO 10 Rate",
+   "LFO 10 Smooth",
+   "LFO 10 Rise",
+   "LFO 10 Delay",
+   "LFO 10 Phase"
+  ],
+  "macros": [
+   "Macro 1",
+   "Macro 2",
+   "Macro 3",
+   "Macro 4",
+   "Macro 5",
+   "Macro 6",
+   "Macro 7",
+   "Macro 8"
+  ],
+  "fx": [
+   "FX Main Param 1",
+   "FX Main Param 2",
+   "FX Main Param 3",
+   "FX Main Param 4",
+   "FX Main Param 5",
+   "FX Main Param 6",
+   "FX Main Param 7",
+   "FX Main Param 8",
+   "FX Main Param 9",
+   "FX Main Param 10",
+   "FX Main Param 11",
+   "FX Main Param 12",
+   "FX Main Param 13",
+   "FX Main Param 14",
+   "FX Main Param 15",
+   "FX Main Param 16",
+   "FX Bus 1 Param 1",
+   "FX Bus 1 Param 2",
+   "FX Bus 1 Param 3",
+   "FX Bus 1 Param 4",
+   "FX Bus 1 Param 5",
+   "FX Bus 1 Param 6",
+   "FX Bus 1 Param 7",
+   "FX Bus 1 Param 8",
+   "FX Bus 1 Param 9",
+   "FX Bus 1 Param 10",
+   "FX Bus 1 Param 11",
+   "FX Bus 1 Param 12",
+   "FX Bus 1 Param 13",
+   "FX Bus 1 Param 14",
+   "FX Bus 1 Param 15",
+   "FX Bus 1 Param 16",
+   "FX Bus 2 Param 1",
+   "FX Bus 2 Param 2",
+   "FX Bus 2 Param 3",
+   "FX Bus 2 Param 4",
+   "FX Bus 2 Param 5",
+   "FX Bus 2 Param 6",
+   "FX Bus 2 Param 7",
+   "FX Bus 2 Param 8",
+   "FX Bus 2 Param 9",
+   "FX Bus 2 Param 10",
+   "FX Bus 2 Param 11",
+   "FX Bus 2 Param 12",
+   "FX Bus 2 Param 13",
+   "FX Bus 2 Param 14",
+   "FX Bus 2 Param 15",
+   "FX Bus 2 Param 16"
+  ],
+  "unison": [
+   "A Unison",
+   "A Uni Stack",
+   "A Uni Detune",
+   "A Uni Blend",
+   "A Uni Width",
+   "A Uni Span",
+   "A Uni Rand Start",
+   "A Uni Warp",
+   "A Uni Warp 2",
+   "A Uni WT Pos",
+   "B Unison",
+   "B Uni Stack",
+   "B Uni Detune",
+   "B Uni Blend",
+   "B Uni Width",
+   "B Uni Span",
+   "B Uni Rand Start",
+   "B Uni Warp",
+   "B Uni Warp 2",
+   "B Uni WT Pos",
+   "C Unison",
+   "C Uni Stack",
+   "C Uni Detune",
+   "C Uni Blend",
+   "C Uni Width",
+   "C Uni Span",
+   "C Uni Rand Start",
+   "C Uni Warp",
+   "C Uni Warp 2",
+   "C Uni WT Pos"
+  ],
+  "routing": [
+   "A>Filter Balance",
+   "A>BUS1",
+   "A>BUS2",
+   "B>Filter Balance",
+   "B>BUS1",
+   "B>BUS2",
+   "C>Filter Balance",
+   "C>BUS1",
+   "C>BUS2",
+   "Noise>Filter Balance",
+   "Noise>BUS1",
+   "Noise>BUS2",
+   "Sub Osc>Filter Balance",
+   "Sub Osc>BUS1",
+   "Sub Osc>BUS2",
+   "Filter 1>BUS1",
+   "Filter 1>BUS2",
+   "Filter 2>BUS1",
+   "Filter 2>BUS2"
+  ],
+  "mod": [
+   "Mod 1 Amount",
+   "Mod 1 Out",
+   "Mod 2 Amount",
+   "Mod 2 Out",
+   "Mod 3 Amount",
+   "Mod 3 Out",
+   "Mod 4 Amount",
+   "Mod 4 Out",
+   "Mod 5 Amount",
+   "Mod 5 Out",
+   "Mod 6 Amount",
+   "Mod 6 Out",
+   "Mod 7 Amount",
+   "Mod 7 Out",
+   "Mod 8 Amount",
+   "Mod 8 Out",
+   "Mod 9 Amount",
+   "Mod 9 Out",
+   "Mod 10 Amount",
+   "Mod 10 Out",
+   "Mod 11 Amount",
+   "Mod 11 Out",
+   "Mod 12 Amount",
+   "Mod 12 Out",
+   "Mod 13 Amount",
+   "Mod 13 Out",
+   "Mod 14 Amount",
+   "Mod 14 Out",
+   "Mod 15 Amount",
+   "Mod 15 Out",
+   "Mod 16 Amount",
+   "Mod 16 Out",
+   "Mod 17 Amount",
+   "Mod 17 Out",
+   "Mod 18 Amount",
+   "Mod 18 Out",
+   "Mod 19 Amount",
+   "Mod 19 Out",
+   "Mod 20 Amount",
+   "Mod 20 Out",
+   "Mod 21 Amount",
+   "Mod 21 Out",
+   "Mod 22 Amount",
+   "Mod 22 Out",
+   "Mod 23 Amount",
+   "Mod 23 Out",
+   "Mod 24 Amount",
+   "Mod 24 Out",
+   "Mod 25 Amount",
+   "Mod 25 Out",
+   "Mod 26 Amount",
+   "Mod 26 Out",
+   "Mod 27 Amount",
+   "Mod 27 Out",
+   "Mod 28 Amount",
+   "Mod 28 Out",
+   "Mod 29 Amount",
+   "Mod 29 Out",
+   "Mod 30 Amount",
+   "Mod 30 Out",
+   "Mod 31 Amount",
+   "Mod 31 Out",
+   "Mod 32 Amount",
+   "Mod 32 Out",
+   "Mod 33 Amount",
+   "Mod 33 Out",
+   "Mod 34 Amount",
+   "Mod 34 Out",
+   "Mod 35 Amount",
+   "Mod 35 Out",
+   "Mod 36 Amount",
+   "Mod 36 Out",
+   "Mod 37 Amount",
+   "Mod 37 Out",
+   "Mod 38 Amount",
+   "Mod 38 Out",
+   "Mod 39 Amount",
+   "Mod 39 Out",
+   "Mod 40 Amount",
+   "Mod 40 Out",
+   "Mod 41 Amount",
+   "Mod 41 Out",
+   "Mod 42 Amount",
+   "Mod 42 Out",
+   "Mod 43 Amount",
+   "Mod 43 Out",
+   "Mod 44 Amount",
+   "Mod 44 Out",
+   "Mod 45 Amount",
+   "Mod 45 Out",
+   "Mod 46 Amount",
+   "Mod 46 Out",
+   "Mod 47 Amount",
+   "Mod 47 Out",
+   "Mod 48 Amount",
+   "Mod 48 Out",
+   "Mod 49 Amount",
+   "Mod 49 Out",
+   "Mod 50 Amount",
+   "Mod 50 Out",
+   "Mod 51 Amount",
+   "Mod 51 Out",
+   "Mod 52 Amount",
+   "Mod 52 Out",
+   "Mod 53 Amount",
+   "Mod 53 Out",
+   "Mod 54 Amount",
+   "Mod 54 Out",
+   "Mod 55 Amount",
+   "Mod 55 Out",
+   "Mod 56 Amount",
+   "Mod 56 Out",
+   "Mod 57 Amount",
+   "Mod 57 Out",
+   "Mod 58 Amount",
+   "Mod 58 Out",
+   "Mod 59 Amount",
+   "Mod 59 Out",
+   "Mod 60 Amount",
+   "Mod 60 Out",
+   "Mod 61 Amount",
+   "Mod 61 Out",
+   "Mod 62 Amount",
+   "Mod 62 Out",
+   "Mod 63 Amount",
+   "Mod 63 Out",
+   "Mod 64 Amount",
+   "Mod 64 Out"
+  ],
+  "arp": [
+   "Arp Enable",
+   "Arp Rate",
+   "Arp Shift",
+   "Arp Range",
+   "Arp Offset",
+   "Arp Repeats",
+   "Arp Gate",
+   "Arp Chance",
+   "Arp Retrig Rate",
+   "Arp Velo Decay",
+   "Arp Velo Target",
+   "Arp Transpose",
+   "Arp Wrap Transpose",
+   "Arp Wrap Range",
+   "Arp Wrap Phantom Note"
+  ],
+  "clip": [
+   "Clip Player Enable",
+   "Clip Player Transpose",
+   "Clip Player Rate",
+   "Clip Player Offset"
+  ],
+  "sound_design": [
+   "Main Vol",
+   "Main Tuning",
+   "Transpose",
+   "Porta Time",
+   "Mono Toggle",
+   "Legato",
+   "Direct Vol",
+   "Bus 1 Vol",
+   "Bus 2 Vol",
+   "A Enable",
+   "A Level",
+   "A Pan",
+   "A Octave",
+   "A Semi",
+   "A Fine",
+   "A WT Pos",
+   "A Warp",
+   "A Warp 2",
+   "A Unison",
+   "A Uni Detune",
+   "A Uni Blend",
+   "B Enable",
+   "B Level",
+   "B Pan",
+   "B Octave",
+   "B Semi",
+   "B Fine",
+   "B WT Pos",
+   "B Warp",
+   "B Warp 2",
+   "B Unison",
+   "B Uni Detune",
+   "B Uni Blend",
+   "C Enable",
+   "C Level",
+   "C Pan",
+   "C Octave",
+   "C Semi",
+   "C Fine",
+   "C WT Pos",
+   "C Warp",
+   "C Warp 2",
+   "C Unison",
+   "C Uni Detune",
+   "C Uni Blend",
+   "Noise Enable",
+   "Noise Level",
+   "Noise Pitch",
+   "Noise Fine",
+   "Sub Enable",
+   "Sub Level",
+   "Sub Octave",
+   "Sub Coarse Pitch",
+   "A>Filter Balance",
+   "B>Filter Balance",
+   "C>Filter Balance",
+   "Noise>Filter Balance",
+   "Sub Osc>Filter Balance",
+   "Filter 1 On",
+   "Filter 1 Type",
+   "Filter 1 Freq",
+   "Filter 1 Res",
+   "Filter 1 Drive",
+   "Filter 1 Var",
+   "Filter 1 Wet",
+   "Filter 2 On",
+   "Filter 2 Type",
+   "Filter 2 Freq",
+   "Filter 2 Res",
+   "Filter 2 Drive",
+   "Filter 2 Var",
+   "Filter 2 Wet",
+   "Env 1 Attack",
+   "Env 1 Hold",
+   "Env 1 Decay",
+   "Env 1 Sustain",
+   "Env 1 Release",
+   "Env 2 Attack",
+   "Env 2 Hold",
+   "Env 2 Decay",
+   "Env 2 Sustain",
+   "Env 2 Release",
+   "Env 3 Attack",
+   "Env 3 Hold",
+   "Env 3 Decay",
+   "Env 3 Sustain",
+   "Env 3 Release",
+   "Env 4 Attack",
+   "Env 4 Hold",
+   "Env 4 Decay",
+   "Env 4 Sustain",
+   "Env 4 Release",
+   "LFO 1 Rate",
+   "LFO 2 Rate",
+   "LFO 3 Rate",
+   "LFO 4 Rate",
+   "Macro 1",
+   "Macro 2",
+   "Macro 3",
+   "Macro 4",
+   "Macro 5",
+   "Macro 6",
+   "Macro 7",
+   "Macro 8",
+   "FX Main Param 1",
+   "FX Main Param 2",
+   "FX Main Param 3",
+   "FX Main Param 4",
+   "FX Main Param 5",
+   "FX Main Param 6",
+   "FX Main Param 7",
+   "FX Main Param 8",
+   "FX Main Param 9",
+   "FX Main Param 10",
+   "FX Main Param 11",
+   "FX Main Param 12",
+   "FX Main Param 13",
+   "FX Main Param 14",
+   "FX Main Param 15",
+   "FX Main Param 16"
+  ]
+ },
+ "parameters": [
+  [
+   "Main Vol",
+   0
+  ],
+  [
+   "Main Tuning",
+   1
+  ],
+  [
+   "Amp",
+   2
+  ],
+  [
+   "Porta Time",
+   3
+  ],
+  [
+   "Porta Curve",
+   4
+  ],
+  [
+   "Bend Up",
+   5
+  ],
+  [
+   "Bend Down",
+   6
+  ],
+  [
+   "Pitch Bend",
+   7
+  ],
+  [
+   "Mod Wheel",
+   8
+  ],
+  [
+   "Mono Toggle",
+   10
+  ],
+  [
+   "Legato",
+   11
+  ],
+  [
+   "Porta Always",
+   12
+  ],
+  [
+   "Porta Scaled",
+   13
+  ],
+  [
+   "Swing",
+   14
+  ],
+  [
+   "Swing Div",
+   15
+  ],
+  [
+   "Transpose",
+   16
+  ],
+  [
+   "Bypass",
+   17
+  ],
+  [
+   "Direct Vol",
+   18
+  ],
+  [
+   "Bus 1 Vol",
+   19
+  ],
+  [
+   "Bus 2 Vol",
+   20
+  ],
+  [
+   "A Enable",
+   1000000
+  ],
+  [
+   "A Level",
+   1000001
+  ],
+  [
+   "A Pan",
+   1000002
+  ],
+  [
+   "A Octave",
+   1000003
+  ],
+  [
+   "A Semi",
+   1000004
+  ],
+  [
+   "A Fine",
+   1000005
+  ],
+  [
+   "A Ratio",
+   1000007
+  ],
+  [
+   "A Hz Offset",
+   1000008
+  ],
+  [
+   "A Coarse Pitch",
+   1000006
+  ],
+  [
+   "A Pitch Track",
+   1000009
+  ],
+  [
+   "A Start",
+   1000010
+  ],
+  [
+   "A End",
+   1000011
+  ],
+  [
+   "A Reverse",
+   1000012
+  ],
+  [
+   "A Scan Rate",
+   1000013
+  ],
+  [
+   "A Scan BPM Rate",
+   1000014
+  ],
+  [
+   "A Scan Key Track",
+   1000015
+  ],
+  [
+   "A Position",
+   1000016
+  ],
+  [
+   "A Loop Start",
+   1000017
+  ],
+  [
+   "A Loop End",
+   1000018
+  ],
+  [
+   "A Loop X-Fade",
+   1000019
+  ],
+  [
+   "A Loop Mode",
+   1000020
+  ],
+  [
+   "A Relative Loop",
+   1000021
+  ],
+  [
+   "A Single Slice",
+   1000022
+  ],
+  [
+   "A Slice Play Mode",
+   1000023
+  ],
+  [
+   "A Unison",
+   1000024
+  ],
+  [
+   "A Uni Stack",
+   1000025
+  ],
+  [
+   "A Uni Detune",
+   1000026
+  ],
+  [
+   "A Uni Blend",
+   1000027
+  ],
+  [
+   "A Uni Width",
+   1000028
+  ],
+  [
+   "A Uni Span",
+   1000029
+  ],
+  [
+   "A Uni Rand Start",
+   1000030
+  ],
+  [
+   "A Uni Warp",
+   1000031
+  ],
+  [
+   "A Uni Warp 2",
+   1000032
+  ],
+  [
+   "A Warp",
+   1000033
+  ],
+  [
+   "A Warp Var",
+   1000034
+  ],
+  [
+   "A Warp Mode",
+   1000035
+  ],
+  [
+   "A Warp 2",
+   1000036
+  ],
+  [
+   "A Warp 2 Var",
+   1000037
+  ],
+  [
+   "A Warp 2 Mode",
+   1000038
+  ],
+  [
+   "A WT Pos",
+   1000039
+  ],
+  [
+   "A Uni WT Pos",
+   1000040
+  ],
+  [
+   "A Phase",
+   1000041
+  ],
+  [
+   "A Rand Phase",
+   1000042
+  ],
+  [
+   "A Param44",
+   1000043
+  ],
+  [
+   "A Param45",
+   1000044
+  ],
+  [
+   "A Param46",
+   1000045
+  ],
+  [
+   "A Param47",
+   1000046
+  ],
+  [
+   "A Param48",
+   1000047
+  ],
+  [
+   "A Param49",
+   1000048
+  ],
+  [
+   "A Param50",
+   1000049
+  ],
+  [
+   "A Param51",
+   1000050
+  ],
+  [
+   "A Param52",
+   1000051
+  ],
+  [
+   "A Param53",
+   1000052
+  ],
+  [
+   "A Param54",
+   1000053
+  ],
+  [
+   "A Param55",
+   1000054
+  ],
+  [
+   "B Enable",
+   1001000
+  ],
+  [
+   "B Level",
+   1001001
+  ],
+  [
+   "B Pan",
+   1001002
+  ],
+  [
+   "B Octave",
+   1001003
+  ],
+  [
+   "B Semi",
+   1001004
+  ],
+  [
+   "B Fine",
+   1001005
+  ],
+  [
+   "B Ratio",
+   1001007
+  ],
+  [
+   "B Hz Offset",
+   1001008
+  ],
+  [
+   "B Coarse Pitch",
+   1001006
+  ],
+  [
+   "B Pitch Track",
+   1001009
+  ],
+  [
+   "B Start",
+   1001010
+  ],
+  [
+   "B End",
+   1001011
+  ],
+  [
+   "B Reverse",
+   1001012
+  ],
+  [
+   "B Scan Rate",
+   1001013
+  ],
+  [
+   "B Scan BPM Rate",
+   1001014
+  ],
+  [
+   "B Scan Key Track",
+   1001015
+  ],
+  [
+   "B Position",
+   1001016
+  ],
+  [
+   "B Loop Start",
+   1001017
+  ],
+  [
+   "B Loop End",
+   1001018
+  ],
+  [
+   "B Loop X-Fade",
+   1001019
+  ],
+  [
+   "B Loop Mode",
+   1001020
+  ],
+  [
+   "B Relative Loop",
+   1001021
+  ],
+  [
+   "B Single Slice",
+   1001022
+  ],
+  [
+   "B Slice Play Mode",
+   1001023
+  ],
+  [
+   "B Unison",
+   1001024
+  ],
+  [
+   "B Uni Stack",
+   1001025
+  ],
+  [
+   "B Uni Detune",
+   1001026
+  ],
+  [
+   "B Uni Blend",
+   1001027
+  ],
+  [
+   "B Uni Width",
+   1001028
+  ],
+  [
+   "B Uni Span",
+   1001029
+  ],
+  [
+   "B Uni Rand Start",
+   1001030
+  ],
+  [
+   "B Uni Warp",
+   1001031
+  ],
+  [
+   "B Uni Warp 2",
+   1001032
+  ],
+  [
+   "B Warp",
+   1001033
+  ],
+  [
+   "B Warp Var",
+   1001034
+  ],
+  [
+   "B Warp Mode",
+   1001035
+  ],
+  [
+   "B Warp 2",
+   1001036
+  ],
+  [
+   "B Warp 2 Var",
+   1001037
+  ],
+  [
+   "B Warp 2 Mode",
+   1001038
+  ],
+  [
+   "B WT Pos",
+   1001039
+  ],
+  [
+   "B Uni WT Pos",
+   1001040
+  ],
+  [
+   "B Phase",
+   1001041
+  ],
+  [
+   "B Rand Phase",
+   1001042
+  ],
+  [
+   "B Param44",
+   1001043
+  ],
+  [
+   "B Param45",
+   1001044
+  ],
+  [
+   "B Param46",
+   1001045
+  ],
+  [
+   "B Param47",
+   1001046
+  ],
+  [
+   "B Param48",
+   1001047
+  ],
+  [
+   "B Param49",
+   1001048
+  ],
+  [
+   "B Param50",
+   1001049
+  ],
+  [
+   "B Param51",
+   1001050
+  ],
+  [
+   "B Param52",
+   1001051
+  ],
+  [
+   "B Param53",
+   1001052
+  ],
+  [
+   "B Param54",
+   1001053
+  ],
+  [
+   "B Param55",
+   1001054
+  ],
+  [
+   "C Enable",
+   1002000
+  ],
+  [
+   "C Level",
+   1002001
+  ],
+  [
+   "C Pan",
+   1002002
+  ],
+  [
+   "C Octave",
+   1002003
+  ],
+  [
+   "C Semi",
+   1002004
+  ],
+  [
+   "C Fine",
+   1002005
+  ],
+  [
+   "C Ratio",
+   1002007
+  ],
+  [
+   "C Hz Offset",
+   1002008
+  ],
+  [
+   "C Coarse Pitch",
+   1002006
+  ],
+  [
+   "C Pitch Track",
+   1002009
+  ],
+  [
+   "C Start",
+   1002010
+  ],
+  [
+   "C End",
+   1002011
+  ],
+  [
+   "C Reverse",
+   1002012
+  ],
+  [
+   "C Scan Rate",
+   1002013
+  ],
+  [
+   "C Scan BPM Rate",
+   1002014
+  ],
+  [
+   "C Scan Key Track",
+   1002015
+  ],
+  [
+   "C Position",
+   1002016
+  ],
+  [
+   "C Loop Start",
+   1002017
+  ],
+  [
+   "C Loop End",
+   1002018
+  ],
+  [
+   "C Loop X-Fade",
+   1002019
+  ],
+  [
+   "C Loop Mode",
+   1002020
+  ],
+  [
+   "C Relative Loop",
+   1002021
+  ],
+  [
+   "C Single Slice",
+   1002022
+  ],
+  [
+   "C Slice Play Mode",
+   1002023
+  ],
+  [
+   "C Unison",
+   1002024
+  ],
+  [
+   "C Uni Stack",
+   1002025
+  ],
+  [
+   "C Uni Detune",
+   1002026
+  ],
+  [
+   "C Uni Blend",
+   1002027
+  ],
+  [
+   "C Uni Width",
+   1002028
+  ],
+  [
+   "C Uni Span",
+   1002029
+  ],
+  [
+   "C Uni Rand Start",
+   1002030
+  ],
+  [
+   "C Uni Warp",
+   1002031
+  ],
+  [
+   "C Uni Warp 2",
+   1002032
+  ],
+  [
+   "C Warp",
+   1002033
+  ],
+  [
+   "C Warp Var",
+   1002034
+  ],
+  [
+   "C Warp Mode",
+   1002035
+  ],
+  [
+   "C Warp 2",
+   1002036
+  ],
+  [
+   "C Warp 2 Var",
+   1002037
+  ],
+  [
+   "C Warp 2 Mode",
+   1002038
+  ],
+  [
+   "C WT Pos",
+   1002039
+  ],
+  [
+   "C Uni WT Pos",
+   1002040
+  ],
+  [
+   "C Phase",
+   1002041
+  ],
+  [
+   "C Rand Phase",
+   1002042
+  ],
+  [
+   "C Param44",
+   1002043
+  ],
+  [
+   "C Param45",
+   1002044
+  ],
+  [
+   "C Param46",
+   1002045
+  ],
+  [
+   "C Param47",
+   1002046
+  ],
+  [
+   "C Param48",
+   1002047
+  ],
+  [
+   "C Param49",
+   1002048
+  ],
+  [
+   "C Param50",
+   1002049
+  ],
+  [
+   "C Param51",
+   1002050
+  ],
+  [
+   "C Param52",
+   1002051
+  ],
+  [
+   "C Param53",
+   1002052
+  ],
+  [
+   "C Param54",
+   1002053
+  ],
+  [
+   "C Param55",
+   1002054
+  ],
+  [
+   "Noise Enable",
+   1003000
+  ],
+  [
+   "Noise Level",
+   1003001
+  ],
+  [
+   "Noise Pan",
+   1003002
+  ],
+  [
+   "Noise Pitch Track",
+   1003009
+  ],
+  [
+   "Noise Pitch",
+   1003033
+  ],
+  [
+   "Noise Fine",
+   1003034
+  ],
+  [
+   "Noise Phase",
+   1003035
+  ],
+  [
+   "Noise Rand Phase",
+   1003036
+  ],
+  [
+   "Sub Enable",
+   1004000
+  ],
+  [
+   "Sub Level",
+   1004001
+  ],
+  [
+   "Sub Pan",
+   1004002
+  ],
+  [
+   "Sub Octave",
+   1004003
+  ],
+  [
+   "Sub Coarse Pitch",
+   1004006
+  ],
+  [
+   "Sub Pitch Track",
+   1004009
+  ],
+  [
+   "Sub Shape",
+   1004033
+  ],
+  [
+   "Sub Phase",
+   1004034
+  ],
+  [
+   "Sub Cont. Phase",
+   1004035
+  ],
+  [
+   "Filter 1 Level",
+   2000008
+  ],
+  [
+   "Filter 1 On",
+   2000000
+  ],
+  [
+   "Filter 1 Type",
+   2000002
+  ],
+  [
+   "Filter 1 Freq",
+   2000003
+  ],
+  [
+   "Filter 1 Res",
+   2000004
+  ],
+  [
+   "Filter 1 Drive",
+   2000005
+  ],
+  [
+   "Filter 1 Var",
+   2000006
+  ],
+  [
+   "Filter 1 Wet",
+   2000001
+  ],
+  [
+   "Filter 1 Stereo",
+   2000007
+  ],
+  [
+   "Filter 1 X",
+   2000009
+  ],
+  [
+   "Filter 1 Y",
+   2000010
+  ],
+  [
+   "Filter 2 Level",
+   2001008
+  ],
+  [
+   "Filter 2 On",
+   2001000
+  ],
+  [
+   "Filter 2 Type",
+   2001002
+  ],
+  [
+   "Filter 2 Freq",
+   2001003
+  ],
+  [
+   "Filter 2 Res",
+   2001004
+  ],
+  [
+   "Filter 2 Drive",
+   2001005
+  ],
+  [
+   "Filter 2 Var",
+   2001006
+  ],
+  [
+   "Filter 2 Wet",
+   2001001
+  ],
+  [
+   "Filter 2 Stereo",
+   2001007
+  ],
+  [
+   "Filter 2 X",
+   2001009
+  ],
+  [
+   "Filter 2 Y",
+   2001010
+  ],
+  [
+   "Env 1 Attack",
+   3000000
+  ],
+  [
+   "Env 1 Hold",
+   3000001
+  ],
+  [
+   "Env 1 Decay",
+   3000002
+  ],
+  [
+   "Env 1 Sustain",
+   3000003
+  ],
+  [
+   "Env 1 Release",
+   3000004
+  ],
+  [
+   "Env 1 Atk Curve",
+   3000005
+  ],
+  [
+   "Env 1 Dec Curve",
+   3000006
+  ],
+  [
+   "Env 1 Rel Curve",
+   3000007
+  ],
+  [
+   "Env 2 Attack",
+   3001000
+  ],
+  [
+   "Env 2 Hold",
+   3001001
+  ],
+  [
+   "Env 2 Decay",
+   3001002
+  ],
+  [
+   "Env 2 Sustain",
+   3001003
+  ],
+  [
+   "Env 2 Release",
+   3001004
+  ],
+  [
+   "Env 2 Atk Curve",
+   3001005
+  ],
+  [
+   "Env 2 Dec Curve",
+   3001006
+  ],
+  [
+   "Env 2 Rel Curve",
+   3001007
+  ],
+  [
+   "Env 2 Start",
+   3001008
+  ],
+  [
+   "Env 2 End",
+   3001009
+  ],
+  [
+   "Env 3 Attack",
+   3002000
+  ],
+  [
+   "Env 3 Hold",
+   3002001
+  ],
+  [
+   "Env 3 Decay",
+   3002002
+  ],
+  [
+   "Env 3 Sustain",
+   3002003
+  ],
+  [
+   "Env 3 Release",
+   3002004
+  ],
+  [
+   "Env 3 Atk Curve",
+   3002005
+  ],
+  [
+   "Env 3 Dec Curve",
+   3002006
+  ],
+  [
+   "Env 3 Rel Curve",
+   3002007
+  ],
+  [
+   "Env 3 Start",
+   3002008
+  ],
+  [
+   "Env 3 End",
+   3002009
+  ],
+  [
+   "Env 4 Attack",
+   3003000
+  ],
+  [
+   "Env 4 Hold",
+   3003001
+  ],
+  [
+   "Env 4 Decay",
+   3003002
+  ],
+  [
+   "Env 4 Sustain",
+   3003003
+  ],
+  [
+   "Env 4 Release",
+   3003004
+  ],
+  [
+   "Env 4 Atk Curve",
+   3003005
+  ],
+  [
+   "Env 4 Dec Curve",
+   3003006
+  ],
+  [
+   "Env 4 Rel Curve",
+   3003007
+  ],
+  [
+   "Env 4 Start",
+   3003008
+  ],
+  [
+   "Env 4 End",
+   3003009
+  ],
+  [
+   "LFO 1 Rate",
+   4000000
+  ],
+  [
+   "LFO 1 Smooth",
+   4000001
+  ],
+  [
+   "LFO 1 Rise",
+   4000002
+  ],
+  [
+   "LFO 1 Delay",
+   4000003
+  ],
+  [
+   "LFO 1 Phase",
+   4000004
+  ],
+  [
+   "LFO 2 Rate",
+   4001000
+  ],
+  [
+   "LFO 2 Smooth",
+   4001001
+  ],
+  [
+   "LFO 2 Rise",
+   4001002
+  ],
+  [
+   "LFO 2 Delay",
+   4001003
+  ],
+  [
+   "LFO 2 Phase",
+   4001004
+  ],
+  [
+   "LFO 3 Rate",
+   4002000
+  ],
+  [
+   "LFO 3 Smooth",
+   4002001
+  ],
+  [
+   "LFO 3 Rise",
+   4002002
+  ],
+  [
+   "LFO 3 Delay",
+   4002003
+  ],
+  [
+   "LFO 3 Phase",
+   4002004
+  ],
+  [
+   "LFO 4 Rate",
+   4003000
+  ],
+  [
+   "LFO 4 Smooth",
+   4003001
+  ],
+  [
+   "LFO 4 Rise",
+   4003002
+  ],
+  [
+   "LFO 4 Delay",
+   4003003
+  ],
+  [
+   "LFO 4 Phase",
+   4003004
+  ],
+  [
+   "LFO 5 Rate",
+   4004000
+  ],
+  [
+   "LFO 5 Smooth",
+   4004001
+  ],
+  [
+   "LFO 5 Rise",
+   4004002
+  ],
+  [
+   "LFO 5 Delay",
+   4004003
+  ],
+  [
+   "LFO 5 Phase",
+   4004004
+  ],
+  [
+   "LFO 6 Rate",
+   4005000
+  ],
+  [
+   "LFO 6 Smooth",
+   4005001
+  ],
+  [
+   "LFO 6 Rise",
+   4005002
+  ],
+  [
+   "LFO 6 Delay",
+   4005003
+  ],
+  [
+   "LFO 6 Phase",
+   4005004
+  ],
+  [
+   "LFO 7 Rate",
+   4006000
+  ],
+  [
+   "LFO 7 Smooth",
+   4006001
+  ],
+  [
+   "LFO 7 Rise",
+   4006002
+  ],
+  [
+   "LFO 7 Delay",
+   4006003
+  ],
+  [
+   "LFO 7 Phase",
+   4006004
+  ],
+  [
+   "LFO 8 Rate",
+   4007000
+  ],
+  [
+   "LFO 8 Smooth",
+   4007001
+  ],
+  [
+   "LFO 8 Rise",
+   4007002
+  ],
+  [
+   "LFO 8 Delay",
+   4007003
+  ],
+  [
+   "LFO 8 Phase",
+   4007004
+  ],
+  [
+   "LFO 9 Rate",
+   4008000
+  ],
+  [
+   "LFO 9 Smooth",
+   4008001
+  ],
+  [
+   "LFO 9 Rise",
+   4008002
+  ],
+  [
+   "LFO 9 Delay",
+   4008003
+  ],
+  [
+   "LFO 9 Phase",
+   4008004
+  ],
+  [
+   "LFO 10 Rate",
+   4009000
+  ],
+  [
+   "LFO 10 Smooth",
+   4009001
+  ],
+  [
+   "LFO 10 Rise",
+   4009002
+  ],
+  [
+   "LFO 10 Delay",
+   4009003
+  ],
+  [
+   "LFO 10 Phase",
+   4009004
+  ],
+  [
+   "Mod 1 Amount",
+   6000000
+  ],
+  [
+   "Mod 1 Out",
+   6000001
+  ],
+  [
+   "Mod 2 Amount",
+   6001000
+  ],
+  [
+   "Mod 2 Out",
+   6001001
+  ],
+  [
+   "Mod 3 Amount",
+   6002000
+  ],
+  [
+   "Mod 3 Out",
+   6002001
+  ],
+  [
+   "Mod 4 Amount",
+   6003000
+  ],
+  [
+   "Mod 4 Out",
+   6003001
+  ],
+  [
+   "Mod 5 Amount",
+   6004000
+  ],
+  [
+   "Mod 5 Out",
+   6004001
+  ],
+  [
+   "Mod 6 Amount",
+   6005000
+  ],
+  [
+   "Mod 6 Out",
+   6005001
+  ],
+  [
+   "Mod 7 Amount",
+   6006000
+  ],
+  [
+   "Mod 7 Out",
+   6006001
+  ],
+  [
+   "Mod 8 Amount",
+   6007000
+  ],
+  [
+   "Mod 8 Out",
+   6007001
+  ],
+  [
+   "Mod 9 Amount",
+   6008000
+  ],
+  [
+   "Mod 9 Out",
+   6008001
+  ],
+  [
+   "Mod 10 Amount",
+   6009000
+  ],
+  [
+   "Mod 10 Out",
+   6009001
+  ],
+  [
+   "Mod 11 Amount",
+   6010000
+  ],
+  [
+   "Mod 11 Out",
+   6010001
+  ],
+  [
+   "Mod 12 Amount",
+   6011000
+  ],
+  [
+   "Mod 12 Out",
+   6011001
+  ],
+  [
+   "Mod 13 Amount",
+   6012000
+  ],
+  [
+   "Mod 13 Out",
+   6012001
+  ],
+  [
+   "Mod 14 Amount",
+   6013000
+  ],
+  [
+   "Mod 14 Out",
+   6013001
+  ],
+  [
+   "Mod 15 Amount",
+   6014000
+  ],
+  [
+   "Mod 15 Out",
+   6014001
+  ],
+  [
+   "Mod 16 Amount",
+   6015000
+  ],
+  [
+   "Mod 16 Out",
+   6015001
+  ],
+  [
+   "Mod 17 Amount",
+   6016000
+  ],
+  [
+   "Mod 17 Out",
+   6016001
+  ],
+  [
+   "Mod 18 Amount",
+   6017000
+  ],
+  [
+   "Mod 18 Out",
+   6017001
+  ],
+  [
+   "Mod 19 Amount",
+   6018000
+  ],
+  [
+   "Mod 19 Out",
+   6018001
+  ],
+  [
+   "Mod 20 Amount",
+   6019000
+  ],
+  [
+   "Mod 20 Out",
+   6019001
+  ],
+  [
+   "Mod 21 Amount",
+   6020000
+  ],
+  [
+   "Mod 21 Out",
+   6020001
+  ],
+  [
+   "Mod 22 Amount",
+   6021000
+  ],
+  [
+   "Mod 22 Out",
+   6021001
+  ],
+  [
+   "Mod 23 Amount",
+   6022000
+  ],
+  [
+   "Mod 23 Out",
+   6022001
+  ],
+  [
+   "Mod 24 Amount",
+   6023000
+  ],
+  [
+   "Mod 24 Out",
+   6023001
+  ],
+  [
+   "Mod 25 Amount",
+   6024000
+  ],
+  [
+   "Mod 25 Out",
+   6024001
+  ],
+  [
+   "Mod 26 Amount",
+   6025000
+  ],
+  [
+   "Mod 26 Out",
+   6025001
+  ],
+  [
+   "Mod 27 Amount",
+   6026000
+  ],
+  [
+   "Mod 27 Out",
+   6026001
+  ],
+  [
+   "Mod 28 Amount",
+   6027000
+  ],
+  [
+   "Mod 28 Out",
+   6027001
+  ],
+  [
+   "Mod 29 Amount",
+   6028000
+  ],
+  [
+   "Mod 29 Out",
+   6028001
+  ],
+  [
+   "Mod 30 Amount",
+   6029000
+  ],
+  [
+   "Mod 30 Out",
+   6029001
+  ],
+  [
+   "Mod 31 Amount",
+   6030000
+  ],
+  [
+   "Mod 31 Out",
+   6030001
+  ],
+  [
+   "Mod 32 Amount",
+   6031000
+  ],
+  [
+   "Mod 32 Out",
+   6031001
+  ],
+  [
+   "Mod 33 Amount",
+   6032000
+  ],
+  [
+   "Mod 33 Out",
+   6032001
+  ],
+  [
+   "Mod 34 Amount",
+   6033000
+  ],
+  [
+   "Mod 34 Out",
+   6033001
+  ],
+  [
+   "Mod 35 Amount",
+   6034000
+  ],
+  [
+   "Mod 35 Out",
+   6034001
+  ],
+  [
+   "Mod 36 Amount",
+   6035000
+  ],
+  [
+   "Mod 36 Out",
+   6035001
+  ],
+  [
+   "Mod 37 Amount",
+   6036000
+  ],
+  [
+   "Mod 37 Out",
+   6036001
+  ],
+  [
+   "Mod 38 Amount",
+   6037000
+  ],
+  [
+   "Mod 38 Out",
+   6037001
+  ],
+  [
+   "Mod 39 Amount",
+   6038000
+  ],
+  [
+   "Mod 39 Out",
+   6038001
+  ],
+  [
+   "Mod 40 Amount",
+   6039000
+  ],
+  [
+   "Mod 40 Out",
+   6039001
+  ],
+  [
+   "Mod 41 Amount",
+   6040000
+  ],
+  [
+   "Mod 41 Out",
+   6040001
+  ],
+  [
+   "Mod 42 Amount",
+   6041000
+  ],
+  [
+   "Mod 42 Out",
+   6041001
+  ],
+  [
+   "Mod 43 Amount",
+   6042000
+  ],
+  [
+   "Mod 43 Out",
+   6042001
+  ],
+  [
+   "Mod 44 Amount",
+   6043000
+  ],
+  [
+   "Mod 44 Out",
+   6043001
+  ],
+  [
+   "Mod 45 Amount",
+   6044000
+  ],
+  [
+   "Mod 45 Out",
+   6044001
+  ],
+  [
+   "Mod 46 Amount",
+   6045000
+  ],
+  [
+   "Mod 46 Out",
+   6045001
+  ],
+  [
+   "Mod 47 Amount",
+   6046000
+  ],
+  [
+   "Mod 47 Out",
+   6046001
+  ],
+  [
+   "Mod 48 Amount",
+   6047000
+  ],
+  [
+   "Mod 48 Out",
+   6047001
+  ],
+  [
+   "Mod 49 Amount",
+   6048000
+  ],
+  [
+   "Mod 49 Out",
+   6048001
+  ],
+  [
+   "Mod 50 Amount",
+   6049000
+  ],
+  [
+   "Mod 50 Out",
+   6049001
+  ],
+  [
+   "Mod 51 Amount",
+   6050000
+  ],
+  [
+   "Mod 51 Out",
+   6050001
+  ],
+  [
+   "Mod 52 Amount",
+   6051000
+  ],
+  [
+   "Mod 52 Out",
+   6051001
+  ],
+  [
+   "Mod 53 Amount",
+   6052000
+  ],
+  [
+   "Mod 53 Out",
+   6052001
+  ],
+  [
+   "Mod 54 Amount",
+   6053000
+  ],
+  [
+   "Mod 54 Out",
+   6053001
+  ],
+  [
+   "Mod 55 Amount",
+   6054000
+  ],
+  [
+   "Mod 55 Out",
+   6054001
+  ],
+  [
+   "Mod 56 Amount",
+   6055000
+  ],
+  [
+   "Mod 56 Out",
+   6055001
+  ],
+  [
+   "Mod 57 Amount",
+   6056000
+  ],
+  [
+   "Mod 57 Out",
+   6056001
+  ],
+  [
+   "Mod 58 Amount",
+   6057000
+  ],
+  [
+   "Mod 58 Out",
+   6057001
+  ],
+  [
+   "Mod 59 Amount",
+   6058000
+  ],
+  [
+   "Mod 59 Out",
+   6058001
+  ],
+  [
+   "Mod 60 Amount",
+   6059000
+  ],
+  [
+   "Mod 60 Out",
+   6059001
+  ],
+  [
+   "Mod 61 Amount",
+   6060000
+  ],
+  [
+   "Mod 61 Out",
+   6060001
+  ],
+  [
+   "Mod 62 Amount",
+   6061000
+  ],
+  [
+   "Mod 62 Out",
+   6061001
+  ],
+  [
+   "Mod 63 Amount",
+   6062000
+  ],
+  [
+   "Mod 63 Out",
+   6062001
+  ],
+  [
+   "Mod 64 Amount",
+   6063000
+  ],
+  [
+   "Mod 64 Out",
+   6063001
+  ],
+  [
+   "Macro 1",
+   7000000
+  ],
+  [
+   "Macro 2",
+   7001000
+  ],
+  [
+   "Macro 3",
+   7002000
+  ],
+  [
+   "Macro 4",
+   7003000
+  ],
+  [
+   "Macro 5",
+   7004000
+  ],
+  [
+   "Macro 6",
+   7005000
+  ],
+  [
+   "Macro 7",
+   7006000
+  ],
+  [
+   "Macro 8",
+   7007000
+  ],
+  [
+   "A>Filter Balance",
+   9000000
+  ],
+  [
+   "A>BUS1",
+   9000001
+  ],
+  [
+   "A>BUS2",
+   9000002
+  ],
+  [
+   "B>Filter Balance",
+   9001000
+  ],
+  [
+   "B>BUS1",
+   9001001
+  ],
+  [
+   "B>BUS2",
+   9001002
+  ],
+  [
+   "C>Filter Balance",
+   9002000
+  ],
+  [
+   "C>BUS1",
+   9002001
+  ],
+  [
+   "C>BUS2",
+   9002002
+  ],
+  [
+   "Noise>Filter Balance",
+   9003000
+  ],
+  [
+   "Noise>BUS1",
+   9003001
+  ],
+  [
+   "Noise>BUS2",
+   9003002
+  ],
+  [
+   "Sub Osc>Filter Balance",
+   9004000
+  ],
+  [
+   "Sub Osc>BUS1",
+   9004001
+  ],
+  [
+   "Sub Osc>BUS2",
+   9004002
+  ],
+  [
+   "Filter 1>BUS1",
+   9005001
+  ],
+  [
+   "Filter 1>BUS2",
+   9005002
+  ],
+  [
+   "Filter 2>BUS1",
+   9006001
+  ],
+  [
+   "Filter 2>BUS2",
+   9006002
+  ],
+  [
+   "Osc Detune Rnd",
+   15000000
+  ],
+  [
+   "Osc Pan Rand",
+   15000001
+  ],
+  [
+   "Env Rand",
+   15000002
+  ],
+  [
+   "Cutoff Rand",
+   15000003
+  ],
+  [
+   "FX Main Param 1",
+   17000000
+  ],
+  [
+   "FX Main Param 2",
+   17000001
+  ],
+  [
+   "FX Main Param 3",
+   17000002
+  ],
+  [
+   "FX Main Param 4",
+   17000003
+  ],
+  [
+   "FX Main Param 5",
+   17000004
+  ],
+  [
+   "FX Main Param 6",
+   17000005
+  ],
+  [
+   "FX Main Param 7",
+   17000006
+  ],
+  [
+   "FX Main Param 8",
+   17000007
+  ],
+  [
+   "FX Main Param 9",
+   17000008
+  ],
+  [
+   "FX Main Param 10",
+   17000009
+  ],
+  [
+   "FX Main Param 11",
+   17000010
+  ],
+  [
+   "FX Main Param 12",
+   17000011
+  ],
+  [
+   "FX Main Param 13",
+   17000012
+  ],
+  [
+   "FX Main Param 14",
+   17000013
+  ],
+  [
+   "FX Main Param 15",
+   17000014
+  ],
+  [
+   "FX Main Param 16",
+   17000015
+  ],
+  [
+   "FX Bus 1 Param 1",
+   17001000
+  ],
+  [
+   "FX Bus 1 Param 2",
+   17001001
+  ],
+  [
+   "FX Bus 1 Param 3",
+   17001002
+  ],
+  [
+   "FX Bus 1 Param 4",
+   17001003
+  ],
+  [
+   "FX Bus 1 Param 5",
+   17001004
+  ],
+  [
+   "FX Bus 1 Param 6",
+   17001005
+  ],
+  [
+   "FX Bus 1 Param 7",
+   17001006
+  ],
+  [
+   "FX Bus 1 Param 8",
+   17001007
+  ],
+  [
+   "FX Bus 1 Param 9",
+   17001008
+  ],
+  [
+   "FX Bus 1 Param 10",
+   17001009
+  ],
+  [
+   "FX Bus 1 Param 11",
+   17001010
+  ],
+  [
+   "FX Bus 1 Param 12",
+   17001011
+  ],
+  [
+   "FX Bus 1 Param 13",
+   17001012
+  ],
+  [
+   "FX Bus 1 Param 14",
+   17001013
+  ],
+  [
+   "FX Bus 1 Param 15",
+   17001014
+  ],
+  [
+   "FX Bus 1 Param 16",
+   17001015
+  ],
+  [
+   "FX Bus 2 Param 1",
+   17002000
+  ],
+  [
+   "FX Bus 2 Param 2",
+   17002001
+  ],
+  [
+   "FX Bus 2 Param 3",
+   17002002
+  ],
+  [
+   "FX Bus 2 Param 4",
+   17002003
+  ],
+  [
+   "FX Bus 2 Param 5",
+   17002004
+  ],
+  [
+   "FX Bus 2 Param 6",
+   17002005
+  ],
+  [
+   "FX Bus 2 Param 7",
+   17002006
+  ],
+  [
+   "FX Bus 2 Param 8",
+   17002007
+  ],
+  [
+   "FX Bus 2 Param 9",
+   17002008
+  ],
+  [
+   "FX Bus 2 Param 10",
+   17002009
+  ],
+  [
+   "FX Bus 2 Param 11",
+   17002010
+  ],
+  [
+   "FX Bus 2 Param 12",
+   17002011
+  ],
+  [
+   "FX Bus 2 Param 13",
+   17002012
+  ],
+  [
+   "FX Bus 2 Param 14",
+   17002013
+  ],
+  [
+   "FX Bus 2 Param 15",
+   17002014
+  ],
+  [
+   "FX Bus 2 Param 16",
+   17002015
+  ],
+  [
+   "Clip Player Enable",
+   10000000
+  ],
+  [
+   "Clip Player Transpose",
+   10000001
+  ],
+  [
+   "Clip Player Rate",
+   10000002
+  ],
+  [
+   "Clip Player Offset",
+   10000003
+  ],
+  [
+   "Arp Enable",
+   12000000
+  ],
+  [
+   "Arp Rate",
+   12000001
+  ],
+  [
+   "Arp Shift",
+   12000002
+  ],
+  [
+   "Arp Range",
+   12000003
+  ],
+  [
+   "Arp Offset",
+   12000004
+  ],
+  [
+   "Arp Repeats",
+   12000005
+  ],
+  [
+   "Arp Gate",
+   12000006
+  ],
+  [
+   "Arp Chance",
+   12000007
+  ],
+  [
+   "Arp Retrig Rate",
+   12000008
+  ],
+  [
+   "Arp Velo Decay",
+   12000009
+  ],
+  [
+   "Arp Velo Target",
+   12000010
+  ],
+  [
+   "Arp Transpose",
+   12000011
+  ],
+  [
+   "Arp Wrap Transpose",
+   12000012
+  ],
+  [
+   "Arp Wrap Range",
+   12000013
+  ],
+  [
+   "Arp Wrap Phantom Note",
+   12000014
+  ],
+  [
+   "Key",
+   14000000
+  ],
+  [
+   "Scale",
+   14000001
+  ],
+  [
+   "Bank",
+   9
+  ]
+ ]
+}
