@@ -5,10 +5,18 @@ description: Control Ableton Live 12 through the LiveBridge MCP tools (live_*). 
 
 # Working in Ableton Live with LiveBridge
 
-LiveBridge gives you ~166 `live_*` tools that drive a running Ableton Live 12 through its Live
-Object Model. Every mutating call is **one undo step** in Live. You cannot hear the result - you
-work from notes, parameters, names, level meters (`live_mixer_meters`) and the user's feedback,
-so describe what you did in musical terms and invite them to listen.
+LiveBridge gives you ~168 `live_*` tools that drive a running Ableton Live 12 through its Live
+Object Model. Every mutating call is **one undo step** in Live. You cannot hear the result
+directly - you work from notes, parameters, names, level meters (`live_mixer_meters`), the two
+analysis tools (`live_theory_analyze` for MIDI, `live_audio_analyze` for audio - section 4b) and
+the user's feedback, so describe what you did in musical terms and invite them to listen.
+
+**Making music, not just clips**: before arranging, building transitions/build-ups, choosing
+effects or mixing, read **`PRODUCTION.md`** next to this file (MCP resource
+`livebridge://production`): energy curves, section blueprints per genre, the build-up and
+transition toolbox, effect chains, harmony/melody rules, density, mix targets and a finishing
+checklist. A track must work as a whole: plan the sections first, make every part serve one
+idea, check theory and sound with the analysis tools.
 
 ## 1. Start every session the same way
 
@@ -137,6 +145,25 @@ Genre starting points (tempo, feel, key):
 
 A multi-step build can go through `live_command_batch` (one undo step, no rollback - steps before
 a failure stay; next-tick state such as the playhead reads stale inside the batch).
+
+## 4b. Check your work: theory and ears
+
+- **`live_theory_analyze`** (MIDI, instant): `clips=[{"track":"Bass","slot":0},
+  {"track":"Pad","slot":0}, {"track":"Lead","slot":0}]` -> key (+ runner-up), chord names with
+  Roman numerals, `progression` (paste-able into `live_clip_write_chords`), `out_of_key` notes,
+  `clashes` between parts (`semitone` rubs, `low_mud`) and suggestions. Use it **before** adding
+  to the user's material (which key? which chords?) and **after** writing parts that play
+  together. Fix clashes with `live_clip_modify_notes` / `live_clip_transform_notes(fit_scale=
+  true)`. Drum Rack clips are recognised and only get statistics.
+- **`live_audio_analyze`** (audio, ~1 s per minute of audio): `file_path=` or an audio clip
+  (`track`+`slot`) -> LUFS, true peak, crest factor, 8-band spectral balance with plain-language
+  `flags` (mud, harsh, no sub, wide low end, clipping), stereo correlation/width, tempo, key and
+  the `energy` curve over time; `reference=` compares against a reference track. Uses:
+  - *Hear the set*: `live_record_resample(...)` -> `clips[0].file_path` -> analyse (`kind="mix"`).
+  - *Samples / Splice loops*: tempo + key before importing -> set warp/`pitch_coarse` to match.
+  - *The user's reference track*: structure (`energy`), loudness and balance to aim for.
+  It needs the optional audio libraries (`type: "unsupported"` carries the pip command - relay
+  it). It measures; the user's ears decide.
 
 ## 5. Instruments, effects, plug-ins, samples, parameters
 

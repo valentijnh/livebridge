@@ -21,7 +21,7 @@ No Max for Live needed. Nothing is installed into Live except a small MIDI Remot
  ┌───────────────────────────┐   TCP JSON lines :9880    ┌──────────────────────────────────┐
  │ livebridge-mcp            │ ────────────────────────▶ │ Ableton Live 12                  │
  │ MCP server (Python ≥3.10) │ ◀──────────────────────── │  └ LiveBridge Remote Script      │
- │ 166 tools, reconnecting   │   UDP discovery :9881     │    (stdlib Python 3.11 in Live,  │
+ │ 168 tools, reconnecting   │   UDP discovery :9881     │    (stdlib Python 3.11 in Live,  │
  │ client, LAN discovery     │ ◀ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │     runs every command on Live's │
  └───────────────────────────┘                           │     main thread, 1 undo step each)│
                                                          └──────────────────────────────────┘
@@ -135,7 +135,7 @@ manual Configure route remains for AU / VST2. Details: [docs/PLUGIN_RACKS.md](do
 
 ## Tools
 
-166 tools, named `live_<area>_<verb>`, backed by 200 bridge commands in the Remote Script. The
+168 tools, named `live_<area>_<verb>`, backed by 200 bridge commands in the Remote Script. The
 full reference (every tool with its arguments and defaults, and every bridge command with the tool
 that runs it) is [docs/TOOLS.md](docs/TOOLS.md), generated from the code by
 `installers/gen_tools_doc.py`; Claude reads the full docstrings at runtime.
@@ -159,6 +159,7 @@ colours are a palette index, `"#RRGGBB"`, `[r, g, b]` or a name.
 | Browser | `live_browser_search/load/hotswap/preview` | Load anything from Live's browser by name (`category="instrument"`, `"drum_kit"`, `"plugin"` …) |
 | Samples & Splice | `live_sample_import/upload/list`, `live_drumrack_set_pad/convert`, `live_splice_import_downloaded` | Files from disk (or from Claude's machine in LAN mode) into slots, the arrangement, Simpler or drum pads |
 | Automation | `live_automation_write/shape/get/copy/clear/state`, `live_automation_record` | Envelopes and LFO shapes in session clips; arrangement automation recorded in real time |
+| Analysis | `live_theory_analyze`, `live_audio_analyze` | Key, chords, clashes between MIDI parts; LUFS, spectral balance, stereo, tempo, key and energy curve of audio (optional `audio` extra), compared with a reference track |
 | View | `live_view_select/show/navigate/selection` | Show what Claude works on, follow the user's selection |
 | Escape hatches | `live_lom_get/set/call/describe/children`, `live_eval_python`, `live_commands`, `live_command_call`, `live_command_batch`, `live_dialog_get/press` | Anything else in the Live Object Model; any bridge command without a curated tool; many commands as one undo step; Live's dialogs |
 
@@ -167,7 +168,10 @@ A Claude skill with a production workflow ships in
 to `~/.claude/skills/livebridge` (Claude Code, every folder) and packs
 `~/.livebridge/livebridge-skill.zip` for Claude Desktop (Settings → Capabilities → Skills →
 Upload skill); `--no-skill` skips that. MCP clients without the skill can read the same text as
-the resource `livebridge://skill` or the prompt `livebridge_workflow`. Fewer tools in context:
+the resource `livebridge://skill` or the prompt `livebridge_workflow`. The musical side — song
+structure, energy, build-ups, transitions, effect chains, mix targets per genre — is in
+[PRODUCTION.md](.claude/skills/livebridge/PRODUCTION.md) next to it (resource
+`livebridge://production`). Fewer tools in context:
 `--toolsets core` ([details](docs/INSTALL.md#fewer-tools-toolsets)).
 
 ## Limitations

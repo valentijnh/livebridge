@@ -35,7 +35,8 @@ the module keeps is the original, so modules can still call their own tools dire
 
 Skill text: the production workflow in ``.claude/skills/livebridge/SKILL.md`` is also served to
 clients without the skill (Claude Desktop without the uploaded zip) as the MCP resource
-``livebridge://skill`` and the prompt ``livebridge_workflow`` (:func:`register_skill`).
+``livebridge://skill`` and the prompt ``livebridge_workflow`` (:func:`register_skill`); its
+musical companion ``PRODUCTION.md`` as ``livebridge://production``.
 
 Compatibility: `mcp` 1.x exposes ``mcp.server.fastmcp.FastMCP``; `mcp` 2.x renamed it to
 ``mcp.server.mcpserver.MCPServer`` with the same decorator/`run` surface. Both are supported.
@@ -60,6 +61,8 @@ __all__ = [
     "FastMCP",
     "INSTRUCTIONS",
     "SERVER_NAME",
+    "PRODUCTION_PATH",
+    "PRODUCTION_URI",
     "SKILL_PATH",
     "SKILL_URI",
     "TOOLSETS",
@@ -126,13 +129,18 @@ Conventions:
   resample a section in real time with `live_record_resample`; say what is impossible instead of
   inventing a workaround.
 - For the full production workflow (beat, bass, chords, mix, arrangement, plug-ins, Splice) read
-  the `livebridge://skill` resource or the `livebridge_workflow` prompt.
+  the `livebridge://skill` resource or the `livebridge_workflow` prompt; for how a track is
+  built (sections, build-ups, transitions, effects, mix targets) read `livebridge://production`.
+  Check your work with `live_theory_analyze` (MIDI) and `live_audio_analyze` (audio).
 """
 
 #: The Claude skill with the production workflow (the MCP server is installed editable from the
 #: repo, so the file sits three levels above this module).
 SKILL_PATH = Path(__file__).resolve().parents[2] / ".claude" / "skills" / "livebridge" / "SKILL.md"
 SKILL_URI = "livebridge://skill"
+#: The musical companion of the skill (song structure, build-ups, effects, mixing).
+PRODUCTION_PATH = SKILL_PATH.with_name("PRODUCTION.md")
+PRODUCTION_URI = "livebridge://production"
 
 _SKILL_FALLBACK = """# LiveBridge workflow
 
@@ -185,6 +193,21 @@ def register_skill(mcp: Any, path: Path | None = None) -> bool:
                                 "mix a track in Ableton Live with the live_* tools)")
         def livebridge_workflow() -> str:
             return skill_text(path)
+
+        production = (path.with_name("PRODUCTION.md") if path else PRODUCTION_PATH)
+
+        @mcp.resource(PRODUCTION_URI, name="livebridge_production", mime_type="text/markdown",
+                      description="LiveBridge production guide (PRODUCTION.md): song structure, "
+                                  "energy, build-ups, drops, transitions, effect chains, "
+                                  "harmony, mixing targets, genre cheat sheet")
+        def livebridge_production() -> str:
+            return skill_text(production)
+
+        @mcp.prompt(name="livebridge_production",
+                    description="Load the LiveBridge production guide (how a track is built: "
+                                "sections, build-ups, transitions, effects, mix)")
+        def livebridge_production_prompt() -> str:
+            return skill_text(production)
     except Exception:  # pragma: no cover - an mcp without resources/prompts must not break startup
         log.exception("could not register the livebridge://skill resource / prompt")
         return False
@@ -262,9 +285,10 @@ TOOLSETS: dict[str, tuple[str, ...]] = {
     "minimal": ("system", "lom", "transport", "tracks", "clips", "notes"),
     # Everyday session work: transport, tracks, clips + notes, devices, mixer, scenes, browser.
     "core": _CORE,
-    # core + arrangement, automation, racks, plug-ins, samples/Splice, recording and routing.
+    # core + arrangement, automation, racks, plug-ins, samples/Splice, recording, routing and
+    # the theory/audio analysis.
     "production": _CORE + ("arrangement", "automation", "racks", "plugins", "plugin_racks",
-                           "samples", "splice", "record", "routing"),
+                           "samples", "splice", "record", "routing", "analysis"),
 }
 
 _ALL_NAMES = ("all", "full", "*")

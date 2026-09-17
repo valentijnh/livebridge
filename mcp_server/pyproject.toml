@@ -26,6 +26,8 @@ dependencies = ["mcp>=1.2"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
+# live_audio_analyze (LUFS, spectrum, tempo, key of audio files); the server runs without it.
+audio = ["numpy>=1.24", "scipy>=1.10", "soundfile>=0.12", "pyloudnorm>=0.1.1"]
 
 [project.scripts]
 livebridge-mcp = "livebridge_mcp.__main__:main"

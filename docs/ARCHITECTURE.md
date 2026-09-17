@@ -311,7 +311,7 @@ After copying, the user enables **Preferences → Link, Tempo & MIDI → Control
   `live_cue_add`, `live_browser_load`, `live_lom_get`. Exceptions: `live_tracks_*` (named in the
   original spec) and the system entry points `live_status`, `live_connect`, `live_discover`,
   `live_commands`, `live_log`. `installers/gen_tools_doc.py --check` enforces the rule. The
-  build has 166 tools (200 bridge commands) — rich tools with optional args instead of dozens of tiny ones. Every tool
+  build has 168 tools (200 bridge commands) — rich tools with optional args instead of dozens of tiny ones. Every tool
   has a precise docstring (what, args, returns, gotchas) — Claude reads these. `docs/TOOLS.md`
   is generated from the code; every bridge command maps to a tool or to a documented composite.
 - Tools return compact text/JSON: `create_app` hands each tool module a registrar whose `tool()`

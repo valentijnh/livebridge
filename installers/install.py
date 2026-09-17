@@ -64,6 +64,8 @@ SKILL_SOURCE = REPO_ROOT / ".claude" / "skills" / "livebridge"
 SCRIPT_NAME = "LiveBridge"
 MCP_NAME = "livebridge"
 MCP_DIST = "livebridge-mcp"
+#: The optional ``audio`` extra of mcp_server/pyproject.toml (live_audio_analyze).
+AUDIO_PACKAGES = ("numpy>=1.24", "scipy>=1.10", "soundfile>=0.12", "pyloudnorm>=0.1.1")
 MCP_MODULE = "livebridge_mcp"
 SPLICE_NAME = "splice"
 SPLICE_URL = "https://mcp.splice.com/mcp"
@@ -1271,6 +1273,18 @@ class Installer(Ops):
             raise InstallError("installing the MCP server failed (exit %d)%s:\n%s"
                                % (result.returncode, hint, tail(result.output)))
         self.info("installed %s (editable) from %s" % (MCP_DIST, MCP_SOURCE))
+        if getattr(self.args, "no_audio", False):
+            self.info("--no-audio: live_audio_analyze stays off until its libraries are added")
+            return
+        # Optional: the libraries behind live_audio_analyze. Never fatal -- the server runs
+        # without them and the tool answers with the pip command.
+        audio = self.run(argv[:-2] + list(AUDIO_PACKAGES), timeout=1800.0)
+        if audio.ok:
+            self.info("installed the audio analysis libraries (%s)" % ", ".join(AUDIO_PACKAGES))
+        else:
+            self.warn("the audio analysis libraries could not be installed (%s) -- everything "
+                      "else works; live_audio_analyze will say how to add them"
+                      % ", ".join(AUDIO_PACKAGES))
 
     def locate_mcp(self, python: Path, venv: Optional[Path]) -> Tuple[str, List[str]]:
         """Path of the ``livebridge-mcp`` executable, or ``python -m livebridge_mcp`` as fallback."""
@@ -1675,6 +1689,9 @@ def build_parser() -> argparse.ArgumentParser:
                         help="pip install into --python / this Python instead of a venv")
     claude.add_argument("--no-pip", action="store_true",
                         help="skip pip; use the livebridge-mcp that is already installed")
+    claude.add_argument("--no-audio", action="store_true",
+                        help="do not install the audio analysis libraries (numpy, scipy, "
+                             "soundfile, pyloudnorm; ~150 MB) behind live_audio_analyze")
 
     parser.add_argument("--dry-run", action="store_true",
                         help="print every action, write nothing")

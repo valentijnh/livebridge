@@ -22,9 +22,14 @@ stdlib only, Python 3.11 inside Live) + an MCP server (`mcp_server/livebridge_mc
 - Tool names: `live_<area>_<verb>`, singular area (exceptions: `live_tracks_*`, system entry points).
   Every bridge command needs a tool or a `COVERED_BY` entry in `installers/gen_tools_doc.py`.
 - After changing tools or commands: `.venv/bin/python installers/gen_tools_doc.py` regenerates
-  `docs/TOOLS.md` (166 tools / 200 commands today; `tests/test_consistency.py` fails when it is
+  `docs/TOOLS.md` (168 tools / 200 commands today; `tests/test_consistency.py` fails when it is
   stale). A new tool with required arguments needs a `SAMPLE_ARGS` entry in
   `tests/test_consistency.py` (the end-to-end smoke call must reach the bridge).
 - The installed `mcp` is 2.x (`MCPServer`); tool modules get the app from `register(mcp, bridge)`,
   return `Any`, and never raise (`bridge_call` / `tool_error`).
+- Analysis lives MCP-side only: `mcp_server/livebridge_mcp/theory.py` (pure Python) and
+  `audio_analysis.py` (optional `audio` extra: numpy/scipy/soundfile/pyloudnorm, lazy imports, no
+  librosa/numba) behind `tools/analysis.py`. Musical know-how for Claude is
+  `.claude/skills/livebridge/PRODUCTION.md` (resource `livebridge://production`); a test checks
+  that every `live_*` name in it exists.
 - Cross-platform (Windows + macOS) always. No third-party imports inside `remote_script/`.
