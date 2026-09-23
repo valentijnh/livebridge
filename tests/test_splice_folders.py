@@ -1,9 +1,13 @@
 """Splice download-folder resolution as checked on the real Mac (T4): the Splice app keeps its
 folder in ~/Splice with "sounds" and "presets" sub-folders; on Windows the default is
-%USERPROFILE%\\Splice (older installs: Documents\\Splice)."""
+%USERPROFILE%\\Splice (older installs: Documents\\Splice).
+
+The Windows cases pass ``shell_folders={}``: on a Windows test host the real registry's known
+folders (Documents moved to OneDrive, ...) would otherwise come first."""
 
 from __future__ import annotations
 
+import posixpath
 import sys
 from pathlib import Path
 
@@ -23,14 +27,16 @@ def test_macos_layout_prefers_the_sounds_folder(tmp_path):
     (home / "Splice" / "presets").mkdir()
     candidates = samples_handlers.splice_candidates(environ={"HOME": str(home)},
                                                     windows=False)
-    assert candidates[:2] == [str(home / "Splice" / "sounds"), str(home / "Splice")]
+    # macOS paths are joined with "/" on any test host (home is C:\... on Windows)
+    splice = posixpath.join(str(home), "Splice")
+    assert candidates[:2] == [posixpath.join(splice, "sounds"), splice]
     existing = [c for c in candidates if Path(c).is_dir()]
-    assert existing[0] == str(home / "Splice" / "sounds")
+    assert existing[0] == posixpath.join(splice, "sounds")
 
 
 def test_windows_default_comes_from_userprofile():
     env = {"USERPROFILE": "C:\\Users\\Valentijn", "HOME": "/ignored"}
-    candidates = samples_handlers.splice_candidates(environ=env, windows=True)
+    candidates = samples_handlers.splice_candidates(environ=env, windows=True, shell_folders={})
     assert candidates[:2] == ["C:\\Users\\Valentijn\\Splice\\sounds",
                               "C:\\Users\\Valentijn\\Splice"]
     assert "C:\\Users\\Valentijn\\Documents\\Splice" in candidates
@@ -38,7 +44,7 @@ def test_windows_default_comes_from_userprofile():
 
 def test_custom_folder_from_the_environment_wins():
     env = {"USERPROFILE": "C:\\Users\\Valentijn", "LIVEBRIDGE_SPLICE_DIR": "D:\\Samples\\Splice"}
-    candidates = samples_handlers.splice_candidates(environ=env, windows=True)
+    candidates = samples_handlers.splice_candidates(environ=env, windows=True, shell_folders={})
     assert candidates[0] == "D:\\Samples\\Splice"
 
 
@@ -53,14 +59,16 @@ def test_windows_onedrive_documents_are_tried():
     """OneDrive's "PC folder backup" moves Documents (and with it Splice's older folder and
     Ableton's User Library / Factory Packs) to %OneDrive%\\Documents."""
     env = {"USERPROFILE": "C:\\Users\\V", "OneDrive": "C:\\Users\\V\\OneDrive - Blub"}
-    candidates = samples_handlers.splice_candidates(environ=env, windows=True)
+    candidates = samples_handlers.splice_candidates(environ=env, windows=True, shell_folders={})
     assert candidates[:2] == ["C:\\Users\\V\\Splice\\sounds", "C:\\Users\\V\\Splice"]
     assert candidates.index("C:\\Users\\V\\Documents\\Splice") < \
         candidates.index("C:\\Users\\V\\OneDrive - Blub\\Documents\\Splice")
     assert "C:\\Users\\V\\OneDrive\\Documents\\Splice\\sounds" in candidates
     assert len(candidates) == len(set(candidates))
-    library = samples_handlers.user_library_candidates(environ=env, windows=True)
+    library = samples_handlers.user_library_candidates(environ=env, windows=True,
+                                                       shell_folders={})
     assert library[0] == "C:\\Users\\V\\Documents\\Ableton\\User Library"
     assert "C:\\Users\\V\\OneDrive - Blub\\Documents\\Ableton\\User Library" in library
-    packs = samples_handlers.factory_packs_candidates(environ=env, windows=True)
+    packs = samples_handlers.factory_packs_candidates(environ=env, windows=True,
+                                                      shell_folders={})
     assert packs[1] == "C:\\Users\\V\\OneDrive - Blub\\Documents\\Ableton\\Factory Packs"

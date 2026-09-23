@@ -389,7 +389,8 @@ def test_full_install_on_macos(tmp_path):
     splice = data["mcpServers"]["splice"]
     assert splice["command"] == "/fake/node/bin/npx"
     assert splice["args"] == ["-y", "mcp-remote", "https://mcp.splice.com/mcp"]
-    assert splice["env"]["PATH"].startswith("/fake/node/bin:")
+    # npx's folder first; a Path like every path here (so "\\fake\\node\\bin" on a Windows host)
+    assert splice["env"]["PATH"].startswith(str(Path("/fake/node/bin")) + ":")
     assert (desktop.parent / "claude_desktop_config.json.livebridge-backup").is_file()
 
     # Claude Code

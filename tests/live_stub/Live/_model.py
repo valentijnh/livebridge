@@ -1389,8 +1389,9 @@ _AUDIO_EXTENSIONS = (".wav", ".aif", ".aiff", ".mp3", ".flac", ".ogg", ".m4a",
 
 def _check_audio_path(path, what):
     path = _as_str(path, what)
-    absolute = os.path.isabs(path) or bool(re.match(r"^[A-Za-z]:[\\/]", path)) \
-        or path.startswith("\\\\")
+    # absolute on macOS or Windows, whatever OS runs the tests (not os.path.isabs: since
+    # Python 3.13 "/Samples/a.wav" is no longer absolute on Windows)
+    absolute = path.startswith(("/", "\\\\")) or bool(re.match(r"^[A-Za-z]:[\\/]", path))
     if not absolute:
         raise RuntimeError("%s: the path must be absolute: %r" % (what, path))
     if not path.lower().endswith(_AUDIO_EXTENSIONS):

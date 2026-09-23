@@ -159,9 +159,11 @@ def test_normalize_windows():
 
 
 def test_splice_and_library_candidates():
+    # shell_folders={}: on a Windows host the real registry's known folders would come first
     mac = samples_handlers.splice_candidates(environ={}, windows=False, home="/Users/v")
     assert mac[:2] == ["/Users/v/Splice/sounds", "/Users/v/Splice"]
-    win = samples_handlers.splice_candidates(environ={}, windows=True, home="C:\\Users\\v")
+    win = samples_handlers.splice_candidates(environ={}, windows=True, home="C:\\Users\\v",
+                                             shell_folders={})
     assert win[:2] == ["C:\\Users\\v\\Splice\\sounds", "C:\\Users\\v\\Splice"]
     assert "C:\\Users\\v\\Documents\\Splice" in win
     custom = samples_handlers.splice_candidates(
@@ -169,7 +171,7 @@ def test_splice_and_library_candidates():
         home="/Users/v")
     assert custom[0] == "/Users/v/Elsewhere"
     assert samples_handlers.user_library_candidates(environ={}, windows=True,
-                                                    home="C:\\Users\\v") == \
+                                                    home="C:\\Users\\v", shell_folders={}) == \
         ["C:\\Users\\v\\Documents\\Ableton\\User Library",
          "C:\\Users\\v\\OneDrive\\Documents\\Ableton\\User Library"]
     assert samples_handlers.user_library_candidates(environ={}, windows=False,
@@ -192,7 +194,7 @@ def test_core_library_and_factory_packs_candidates():
                                                      home="/Users/v") == \
         ["/Users/v/Music/Ableton/Factory Packs"]
     assert samples_handlers.factory_packs_candidates(environ={}, windows=True,
-                                                     home="C:\\Users\\v") == \
+                                                     home="C:\\Users\\v", shell_folders={}) == \
         ["C:\\Users\\v\\Documents\\Ableton\\Factory Packs",
          "C:\\Users\\v\\OneDrive\\Documents\\Ableton\\Factory Packs"]
 
