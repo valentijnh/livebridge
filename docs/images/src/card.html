@@ -1,0 +1,82 @@
+<!doctype html>
+<!-- Source of docs/images/social-preview.png (1280x640) and docs/images/banner.png (1600x500).
+     Render with headless Chrome, e.g. on macOS:
+       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+         --force-device-scale-factor=1 --window-size=1280,640 --screenshot=social-preview.png "card.html?social"
+       ... --window-size=1600,500 --screenshot=banner.png "card.html?banner"  -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #0b0d12; --panel: #151922; --line: #262c39; --text: #eef0f6; --muted: #a3abbd;
+    --orange: #ff8a3d; --violet: #8b7cf6; --cyan: #3fd0e0; --green: #4ade80;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100vw; height: 100vh; overflow: hidden; background: var(--bg); color: var(--text); }
+  body {
+    display: grid; align-items: center; position: relative;
+    grid-template-columns: 1.08fr 1fr; gap: 56px; padding: 0 72px;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(38% 60% at 12% 30%, rgba(255,138,61,.26), transparent 70%),
+      radial-gradient(34% 55% at 55% 18%, rgba(139,124,246,.24), transparent 70%),
+      radial-gradient(34% 60% at 92% 75%, rgba(63,208,224,.2), transparent 70%);
+  }
+  body > * { position: relative; z-index: 1; }
+  .brand { display: flex; align-items: center; gap: 16px; font-weight: 750; font-size: 34px; letter-spacing: -.02em; }
+  .brand img { width: 58px; height: 58px; }
+  h1 { font-size: 60px; line-height: 1.03; letter-spacing: -.04em; margin: 26px 0 22px; font-weight: 820; }
+  h1 span { background: linear-gradient(90deg, var(--orange), var(--violet) 55%, var(--cyan)); -webkit-background-clip: text; color: transparent; }
+  .sub { font-size: 23px; color: var(--muted); line-height: 1.4; margin: 0; }
+  .sub b { color: var(--text); font-weight: 650; }
+  .pills { display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap; }
+  .pills span { font-size: 17px; border: 1px solid var(--line); background: rgba(21,25,34,.8); border-radius: 999px; padding: 6px 14px; color: var(--muted); }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .you { background: #1b202b; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 19px; line-height: 1.45; margin-bottom: 14px; }
+  .you small { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #6b7385; font-weight: 700; margin-bottom: 2px; }
+  .calls { font: 15px/1.75 ui-monospace, "SF Mono", Menlo, monospace; color: var(--muted); margin-bottom: 14px; white-space: nowrap; overflow: hidden; }
+  .calls div::before { content: "● "; color: var(--green); font-size: 11px; }
+  .calls b { color: var(--text); font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .grid div { height: 34px; border-radius: 8px; padding: 0 12px; font-weight: 700; font-size: 15px; line-height: 34px; color: #0b0d12; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grid .h { height: 28px; line-height: 28px; font-size: 14px; }
+  .grid .e { border: 1.5px dashed var(--line); }
+  .grid .p::before { content: "▶"; font-size: 10px; margin-right: 8px; }
+  .o { background: var(--orange); } .v { background: var(--violet); } .c { background: var(--cyan); }
+
+  /* banner: wider and shorter */
+  body.banner { grid-template-columns: 1.15fr 1fr; padding: 0 80px; gap: 64px; }
+  body.banner h1 { font-size: 58px; margin: 18px 0 16px; }
+  body.banner .sub { font-size: 22px; }
+  body.banner .pills { display: none; }
+  body.banner .calls { display: none; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="brand"><img src="../../../site/assets/logo.svg" alt="">LiveBridge</div>
+    <h1>Make music in Ableton Live by <span>talking to Claude</span>.</h1>
+    <p class="sub"><b>Ableton Live MCP server</b> · 168 tools for beats, chords, Serum 2, automation, arrangement, mixing and Splice.</p>
+    <div class="pills"><span>macOS + Windows</span><span>Every Live 12 edition</span><span>Free, MIT</span></div>
+  </div>
+  <div class="panel">
+    <div class="you"><small>You</small>Make an 8-bar house beat at 124 BPM with a 909 kit, a sub bass and a warm pad.</div>
+    <div class="calls">
+      <div><b>live_browser_load</b>("909 Core Kit", new_track=true)</div>
+      <div><b>live_clip_write_pattern</b>(track="Drums", repeat=8)</div>
+      <div><b>live_clip_write_chords</b>("Am7 Fmaj7 Cmaj7 G")</div>
+    </div>
+    <div class="grid">
+      <div class="h o">Drums</div><div class="h v">Bass</div><div class="h c">Pad</div>
+      <div class="o p">909 Groove</div><div class="v p">Off-beat Bass</div><div class="c p">Am7 Fmaj7 Cmaj7 G</div>
+      <div class="o p">Clap Roll</div><div class="e"></div><div class="c p">Am7 Fmaj7 Cmaj7 G</div>
+    </div>
+  </div>
+  <script>if (location.search.includes("banner")) document.body.classList.add("banner");</script>
+</body>
+</html>

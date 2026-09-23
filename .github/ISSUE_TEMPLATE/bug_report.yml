@@ -1,0 +1,66 @@
+name: Bug report
+description: Something in Live or in a tool doesn't work as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Connection problems (script not listed, "not reachable", token or
+        firewall) are usually solved by [TROUBLESHOOTING.md](https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/TROUBLESHOOTING.md).
+        Security issues: please report them privately instead (see SECURITY.md).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you asked Claude (or which tool you called), what happened, and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: Tool call and error
+      description: The failing tool call and its result, if you have them.
+      render: json
+  - type: textarea
+    id: status
+    attributes:
+      label: Output of live_status(include_server=true)
+      description: Ask Claude to run it. The token is redacted.
+      render: json
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 15.6 / Windows 11 24H2
+    validations:
+      required: true
+  - type: input
+    id: live
+    attributes:
+      label: Ableton Live version and edition
+      placeholder: 12.4.5 Suite
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: MCP client
+      options:
+        - Claude Code
+        - Claude Desktop
+        - Other MCP client
+    validations:
+      required: true
+  - type: dropdown
+    id: setup
+    attributes:
+      label: Setup
+      options:
+        - Live and Claude on the same computer
+        - Live and Claude on two computers (LAN mode)
+  - type: textarea
+    id: log
+    attributes:
+      label: Live's Log.txt
+      description: The LiveBridge lines around the problem, if Live misbehaved.
+      render: text

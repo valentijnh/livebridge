@@ -1,0 +1,28 @@
+name: Feature request
+description: Something you'd like Claude to be able to do in Live.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: want
+    attributes:
+      label: What would you like to say to Claude?
+      description: The prompt you'd type, and what should happen in Live.
+      placeholder: '"Sidechain every pad to the kick and make the release follow the tempo."'
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it matter in your workflow?
+  - type: textarea
+    id: now
+    attributes:
+      label: What happens today?
+      description: Does Claude refuse, use a workaround (live_eval_python, several calls), or get it wrong?
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Checks
+      options:
+        - label: I checked the limitations in the README (some things are impossible through Live's API, such as saving the set or exporting audio files).
+          required: true

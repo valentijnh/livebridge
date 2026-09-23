@@ -5,22 +5,31 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "livebridge-mcp"
 version = "0.1.0"
-description = "MCP server that lets Claude control Ableton Live 12 through the LiveBridge Remote Script"
+description = "Ableton Live MCP server: let Claude control Ableton Live 12 (tracks, clips, MIDI, devices, Serum 2, automation, arrangement, Splice) through the LiveBridge Remote Script"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "LiveBridge" }]
-keywords = ["ableton", "live", "mcp", "music", "claude", "remote-script"]
+keywords = [
+    "ableton", "ableton-live", "live-12", "mcp", "mcp-server", "model-context-protocol",
+    "claude", "anthropic", "music", "music-production", "daw", "midi", "remote-script",
+    "serum", "splice",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Topic :: Artistic Software",
     "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Sound/Audio :: MIDI",
 ]
 dependencies = ["mcp>=1.2"]
 
@@ -33,7 +42,12 @@ audio = ["numpy>=1.24", "scipy>=1.10", "soundfile>=0.12", "pyloudnorm>=0.1.1"]
 livebridge-mcp = "livebridge_mcp.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/livebridge/livebridge"
+Homepage = "https://valentijnh.github.io/livebridge-ableton-mcp/"
+Repository = "https://github.com/valentijnh/livebridge-ableton-mcp"
+Documentation = "https://github.com/valentijnh/livebridge-ableton-mcp/tree/main/docs"
+Examples = "https://github.com/valentijnh/livebridge-ableton-mcp/tree/main/examples"
+Issues = "https://github.com/valentijnh/livebridge-ableton-mcp/issues"
+Changelog = "https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -1,16 +1,99 @@
-# LiveBridge
+<p align="center">
+  <a href="https://valentijnh.github.io/livebridge-ableton-mcp/"><img src="docs/images/banner.png" alt="LiveBridge: make music in Ableton Live by talking to Claude" width="100%"></a>
+</p>
 
-**Let Claude control Ableton Live 12.** LiveBridge connects Claude (Claude Code, Claude Desktop or
-any MCP client) to a running Ableton Live: transport, tracks, clips, MIDI notes, audio clips and
-samples, built-in devices, third-party VST/AU plug-in parameters, the browser (instruments,
-effects, drum kits, presets, packs, user library), automation, the arrangement, scenes, locators,
-mixer, routing, recording and view navigation — plus Splice samples through Splice's official MCP.
+<h1 align="center">LiveBridge · Ableton Live MCP server for Claude</h1>
+
+<p align="center">
+  <strong>Make music in Ableton Live 12 by talking to Claude.</strong><br>
+  168 tools for tracks, clips, MIDI, drums, chords, devices, Serum 2, automation, arrangement,
+  mixing and Splice samples.<br>
+  macOS and Windows · every Live 12 edition · no Max for Live · MIT licensed
+</p>
+
+<p align="center">
+  <a href="https://github.com/valentijnh/livebridge-ableton-mcp/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/valentijnh/livebridge-ableton-mcp/actions/workflows/tests.yml/badge.svg"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
+  <img alt="Ableton Live 12" src="https://img.shields.io/badge/Ableton%20Live-12-111111">
+  <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-3776AB">
+  <img alt="macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-555555">
+  <a href="https://modelcontextprotocol.io"><img alt="Model Context Protocol server" src="https://img.shields.io/badge/MCP-server-D97757"></a>
+</p>
+
+<p align="center">
+  <a href="https://valentijnh.github.io/livebridge-ableton-mcp/"><b>Website</b></a> ·
+  <a href="#quick-start"><b>Quick start</b></a> ·
+  <a href="examples/"><b>Examples</b></a> ·
+  <a href="examples/prompts.md"><b>100+ prompts</b></a> ·
+  <a href="docs/TOOLS.md"><b>Tool reference</b></a> ·
+  <a href="#faq"><b>FAQ</b></a>
+</p>
+
+> **You:** Make an 8-bar house beat at 124 BPM: a 909 kit, an off-beat sub bass on Am–F–C–G and
+> a warm pad playing the chords. Keep the levels sensible.
+>
+> **Claude:** *sets the tempo, loads the 909 Core Kit, writes the drum pattern, loads a sub
+> bass and a pad from Live's browser, writes the bassline and the chords with smooth voice
+> leading, sets the levels in dB and names everything.* 17 tool calls, each one undo step in Live.
+> [See every call →](examples/01-house-beat.md)
+>
+> **You:** Turn it into a full track: intro, a build-up with a clap roll and a filter sweep, the
+> drop, a breakdown, a second build and drop, and an outro. Add locators.
+>
+> **Claude:** *writes the variations into scenes, sweeps the pad's filter through the build, lays
+> out all seven sections in one call and adds the locators.*
+> [See every call →](examples/05-song-structure.md)
+
+![Ableton Live's Arrangement View with the song Claude built: Drums, Bass and Pad across seven sections with locators, and the pad's EQ Eight low cut below](docs/images/live-arrangement.png)
+
+<sub>Ableton Live 12.4.5 with the song from examples 1, 5 and 6, built through LiveBridge alone.</sub>
+
+LiveBridge connects Claude (Claude Code, Claude Desktop or any MCP client) to a running
+Ableton Live: transport, tracks, clips, MIDI notes, audio clips and samples, built-in devices,
+third-party VST/AU plug-in parameters, the browser (instruments, effects, drum kits, presets,
+packs, user library), automation, the arrangement, scenes, locators, mixer, routing, recording
+and view navigation, plus Splice samples through Splice's official MCP server.
 
 It works on **macOS and Windows**, with **every Live 12 edition** (built and verified against
 Live 12.4.5 Suite), with Live on the same computer as Claude **or on another computer in your
-network** — handy when you switch between a Mac and a Windows PC.
+network**, which is handy when you switch between a Mac and a Windows PC.
 
 No Max for Live needed. Nothing is installed into Live except a small MIDI Remote Script.
+
+## What you can ask
+
+| You say | Claude does it with | Example |
+|---|---|---|
+| *"Make an 8-bar house beat at 124 BPM with a 909 kit"* | drum patterns by pad name, presets from Live's browser, a bassline, chords, levels in dB | [1](examples/01-house-beat.md) |
+| *"Write a sad progression in D minor, a bassline and an arp, and check they fit"* | chords from symbols or Roman numerals, arpeggios, a music-theory check that finds clashes | [2](examples/02-chords-bass-arp.md) |
+| *"Load Serum 2 and design a dark Reese bass"* | 120 Serum 2 parameters controllable without *Configure*, macros, LFO automation | [3](examples/03-serum-2-reese-bass.md) |
+| *"Find a hi-hat loop on Splice and put it on a new track"* | Splice's official MCP server for search and download, LiveBridge for import and warping | [4](examples/04-splice-samples.md) |
+| *"Turn this loop into a full track with a build-up and a breakdown"* | scenes, a clap roll, a filter sweep, the arrangement in one call, locators | [5](examples/05-song-structure.md) |
+| *"Check my mix against my reference track"* | meters, a bounce, LUFS and spectrum comparison, EQ, side-chain, limiter | [6](examples/06-mix-check.md) |
+| *"Connect to Live on my Windows PC"* | LAN mode with a token, discovery, file upload to the Live machine | [7](examples/07-two-computers.md) |
+| *"Rename every clip after its track and scene"* | the whole Live Object Model, batches, Python inside Live | [8](examples/08-escape-hatches.md) |
+
+More in the [prompt library](examples/prompts.md). Scripting Live without Claude:
+[examples/python](examples/python/).
+
+## Why LiveBridge
+
+- **All of Live that its API allows**, not just transport and notes: 168 tools backed by 200
+  commands, plus direct access to the Live Object Model for anything else.
+- **Tools that think like a producer:** drum patterns written against the kit's pad names,
+  chords from symbols or Roman numerals with voice leading, arps and basslines from a
+  progression, humanize/swing/groove, section layouts, filter sweeps and LFOs, mixing in dB.
+- **Ears, of a kind:** a music-theory check (key, chords, clashes between parts) and audio
+  analysis (LUFS, spectrum, stereo, tempo, key), optionally against a reference track.
+- **Big plug-ins, fully controllable:** Serum 2 and other VST3 synths without clicking
+  *Configure* for every knob.
+- **Splice in the same conversation**, through Splice's official MCP server.
+- **Two computers:** Claude on your laptop, Live on the studio PC (or the other way round),
+  with discovery and a token.
+- **Safe to try:** every change is one undo step, the token protects the connection, LAN mode
+  is opt-in and Python-in-Live can be switched off.
+- **Tested:** 1,500+ unit tests on macOS, Windows and Linux, and end-to-end checks against a
+  real Live 12.4.5.
 
 ## How it works
 
@@ -49,14 +132,14 @@ Claude Code. Node.js (`npx`) is only needed for Splice in Claude Desktop's JSON 
 ### macOS
 
 ```bash
-git clone <this repository> LiveBridge && cd LiveBridge
+git clone https://github.com/valentijnh/livebridge-ableton-mcp.git LiveBridge && cd LiveBridge
 ./installers/install.sh            # or: python3 installers/install.py
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-git clone <this repository> LiveBridge; cd LiveBridge
+git clone https://github.com/valentijnh/livebridge-ableton-mcp.git LiveBridge; cd LiveBridge
 powershell -ExecutionPolicy Bypass -File installers\install.ps1   # or: py installers\install.py
 ```
 
@@ -198,6 +281,53 @@ These are limits of Live's Python API, not of LiveBridge (details and alternativ
 - `live_eval_python` runs arbitrary Python inside Live; it is on by default for the owner, always
   behind the token, and can be disabled with `--no-allow-eval`.
 
+## FAQ
+
+**Which Ableton Live versions and editions work?**
+Live 12, in every edition. It was built and verified against Live 12.4.5 Suite;
+`live_device_insert` needs 12.3 or later, and older 12.x versions load devices through the
+browser tools instead. Some example presets are Suite content; other editions use their own. Live 11 is not supported: the Remote Script is
+written for the Python 3.11 that Live 12 embeds.
+
+**Do I need Max for Live?**
+No. LiveBridge is a MIDI Remote Script, the same kind of script that drives Push and other
+controllers, so it runs in every edition.
+
+**Which AI apps can use it?**
+Claude Code and Claude Desktop; the installer sets both up, including the LiveBridge skill.
+Any other MCP client that can start a local (stdio) server works too: run `livebridge-mcp`
+([mcp_server/README.md](mcp_server/README.md)).
+
+**Can Claude hear my music?**
+Not directly. Claude reads what Live knows (notes, devices, parameters, levels), checks harmony
+with `live_theory_analyze` and measures bounced audio with `live_audio_analyze`: loudness,
+spectrum, stereo, tempo and key. Your ears still have the final say.
+
+**Is it free?**
+LiveBridge is free and open source (MIT). You need Ableton Live 12 and a Claude plan; Splice is
+optional (searching is free, downloads use your Splice credits).
+
+**Does it work on Windows? With Live and Claude on different computers?**
+Yes to both: macOS and Windows, and Claude and Live can run on two computers in your network,
+Mac and PC mixed ([example 7](examples/07-two-computers.md), [docs/NETWORK.md](docs/NETWORK.md)).
+
+**Will it mess up my set?**
+Every change is one undo step (Cmd/Ctrl+Z). The skill tells Claude to ask before deleting or
+overwriting your material and not to start playback or recording unless asked. Work on a copy
+of an important set anyway, and save it yourself: Live's API cannot save.
+
+**Is it safe to run?**
+By default Live only accepts connections from the same computer, with a random token. LAN mode
+is opt-in, still requires the token, and is meant for your own network. Python-in-Live
+(`live_eval_python`) can be switched off with `--no-allow-eval`. See [SECURITY.md](SECURITY.md).
+
+**How does it compare with other Ableton MCP servers?**
+Beyond the basics (transport, tracks, clips and notes) LiveBridge covers the browser, devices and
+racks, third-party plug-in parameters (Serum 2 without *Configure*), automation in clips and the
+arrangement, song structure, routing and side-chains, resampling, the theory and audio
+analysis, Splice, two-computer setups, and direct access to the Live Object Model. Every tool is
+tested against a simulated Live on macOS, Windows and Linux.
+
 ## Troubleshooting
 
 Script not listed in Live, port in use, token mismatch, firewall, timeouts, plug-in parameters
@@ -219,6 +349,7 @@ The Remote Script is standard-library only and must stay Python 3.11 compatible.
 parsing (tracks, devices, colours, times, paging) lives in `remote_script/LiveBridge/resolve.py`.
 After adding or changing a tool or command, regenerate the reference:
 `.venv/bin/python installers/gen_tools_doc.py` (`tests/test_consistency.py` fails when it is stale).
+More in [CONTRIBUTING.md](CONTRIBUTING.md); changes per version in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

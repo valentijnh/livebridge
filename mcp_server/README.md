@@ -58,7 +58,7 @@ path in `LIVEBRIDGE_CONFIG`. `live_connect(..., persist=True)` writes it for you
 
 ## Tools in this package
 
-145 tools in 20 modules — the full generated reference is [docs/TOOLS.md](../docs/TOOLS.md).
+168 tools in 22 modules — the full generated reference is [docs/TOOLS.md](../docs/TOOLS.md).
 The core (`tools/system.py`, `tools/lom.py`):
 
 | Tool | What it does |

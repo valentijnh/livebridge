@@ -1,0 +1,54 @@
+# Publishes the website (site/) to GitHub Pages: https://valentijnh.github.io/livebridge-ableton-mcp/
+# The screenshots and the social image live once in docs/images (the README uses them too)
+# and are copied in here; the sitemap gets today's date.
+name: pages
+
+on:
+  push:
+    branches: [main]
+    paths: [site/**, docs/images/**, .github/workflows/pages.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp -R site/. _site/
+          cp docs/images/live-session.png docs/images/live-arrangement.png \
+             docs/images/social-preview.png docs/images/apple-touch-icon.png _site/assets/
+          cat > _site/sitemap.xml <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://valentijnh.github.io/livebridge-ableton-mcp/</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+            </url>
+          </urlset>
+          EOF
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

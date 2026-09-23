@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiveBridge · Ableton Live MCP server for Claude</title>
+<meta name="description" content="Make music in Ableton Live 12 by talking to Claude. Free, open-source MCP server with 168 tools: beats, chords, Serum 2, automation, arrangement, Splice.">
+<meta name="keywords" content="Ableton Live MCP, Ableton MCP server, Claude Ableton, AI music production, Model Context Protocol, Ableton Live 12, Serum 2, Splice, Remote Script, Claude Code, Claude Desktop">
+<link rel="canonical" href="https://valentijnh.github.io/livebridge-ableton-mcp/">
+<meta name="theme-color" content="#0b0d12">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LiveBridge">
+<meta property="og:title" content="LiveBridge · Make music in Ableton Live by talking to Claude">
+<meta property="og:description" content="Free, open-source MCP server with 168 tools for Ableton Live 12: beats, chords, Serum 2, automation, arrangement, mixing and Splice samples. macOS and Windows.">
+<meta property="og:url" content="https://valentijnh.github.io/livebridge-ableton-mcp/">
+<meta property="og:image" content="https://valentijnh.github.io/livebridge-ableton-mcp/assets/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="LiveBridge: make music in Ableton Live by talking to Claude">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LiveBridge · Ableton Live MCP server for Claude">
+<meta name="twitter:description" content="Make music in Ableton Live 12 by talking to Claude. 168 tools, macOS and Windows, free and open source.">
+<meta name="twitter:image" content="https://valentijnh.github.io/livebridge-ableton-mcp/assets/social-preview.png">
+
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://valentijnh.github.io/livebridge-ableton-mcp/#app",
+      "name": "LiveBridge",
+      "alternateName": "LiveBridge Ableton Live MCP server",
+      "description": "An MCP server and Ableton Live Remote Script that lets Claude control Ableton Live 12: tracks, clips, MIDI, drum patterns, chords, devices, Serum 2 and other VST3 plug-ins, automation, arrangement, mixing, recording and Splice samples.",
+      "url": "https://valentijnh.github.io/livebridge-ableton-mcp/",
+      "downloadUrl": "https://github.com/valentijnh/livebridge-ableton-mcp/releases/latest",
+      "image": "https://valentijnh.github.io/livebridge-ableton-mcp/assets/social-preview.png",
+      "screenshot": "https://valentijnh.github.io/livebridge-ableton-mcp/assets/live-session.png",
+      "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "Music production",
+      "operatingSystem": "macOS, Windows",
+      "softwareVersion": "1.0.0",
+      "softwareRequirements": "Ableton Live 12, Python 3.10+, Claude Code or Claude Desktop",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "license": "https://opensource.org/licenses/MIT",
+      "author": { "@type": "Person", "name": "Valentijn", "url": "https://github.com/valentijnh" },
+      "keywords": "Ableton Live, MCP, Model Context Protocol, Claude, AI music production, Serum 2, Splice"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "livebridge-ableton-mcp",
+      "codeRepository": "https://github.com/valentijnh/livebridge-ableton-mcp",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/licenses/MIT",
+      "targetProduct": { "@id": "https://valentijnh.github.io/livebridge-ableton-mcp/#app" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Which Ableton Live versions does LiveBridge support?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ableton Live 12, in every edition. It was built and verified against Live 12.4.5 Suite. Live 11 is not supported." } },
+        { "@type": "Question", "name": "Do I need Max for Live?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. LiveBridge is a MIDI Remote Script, the same kind of script that drives Push and other controllers, so it runs in every edition of Live 12." } },
+        { "@type": "Question", "name": "Which AI apps can use LiveBridge?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Claude Code and Claude Desktop, which the installer sets up, and any other MCP client that can start a local stdio server." } },
+        { "@type": "Question", "name": "Can Claude hear my music?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not directly. Claude reads what Live knows (notes, devices, parameters, levels), checks harmony with a music-theory analysis and measures bounced audio: loudness, spectrum, stereo, tempo and key." } },
+        { "@type": "Question", "name": "Is LiveBridge free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, LiveBridge is free and open source under the MIT license. You need Ableton Live 12 and a Claude plan; Splice is optional." } },
+        { "@type": "Question", "name": "Does LiveBridge work on Windows and across two computers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. It runs on macOS and Windows, and Claude and Live can run on two different computers in your network, Mac and PC mixed." } },
+        { "@type": "Question", "name": "Will it mess up my Live set?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every change Claude makes is one undo step in Live. Claude asks before deleting or overwriting your material and does not start playback or recording unless asked. Save your set yourself: Live's API cannot save." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="LiveBridge home"><img src="assets/logo.svg" alt="" width="30" height="30">LiveBridge</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#examples">Examples</a>
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#tools">Tools</a>
+      <a href="#faq">FAQ</a>
+      <a class="gh" href="https://github.com/valentijnh/livebridge-ableton-mcp">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.34.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Ableton Live 12 · MCP server · free and open source</span>
+      <h1>Make music in Ableton Live by <span class="grad">talking to Claude</span>.</h1>
+      <p class="lede">LiveBridge gives Claude <strong>168 tools</strong> for Ableton Live: beats and basslines,
+        chords and arps, Serum 2 sound design, automation, song structure, mixing and Splice samples.
+        You describe the music; Claude builds it in your set, one undo step at a time.</p>
+      <div class="cta">
+        <a class="btn primary" href="#install">Get started</a>
+        <a class="btn" href="https://github.com/valentijnh/livebridge-ableton-mcp">View on GitHub</a>
+      </div>
+      <ul class="facts">
+        <li>macOS and Windows</li>
+        <li>Every Live 12 edition</li>
+        <li>No Max for Live</li>
+        <li>Claude Code and Claude Desktop</li>
+      </ul>
+    </div>
+
+    <div class="demo" data-demo aria-label="Demo: Claude builds a house beat in Ableton Live">
+      <div class="demo-bar"><i></i><i></i><i></i><span>Claude + Ableton Live</span>
+        <button type="button" data-replay>Replay</button></div>
+      <div class="demo-body">
+        <div class="msg you"><b>You</b><span data-typed="Make an 8-bar house beat at 124 BPM: a 909 kit, an off-beat sub bass on Am–F–C–G and a warm pad on the chords."></span><span class="caret" aria-hidden="true"></span></div>
+        <ol class="calls" aria-label="Tool calls Claude makes">
+          <li><span class="fn">live_transport_set</span>(tempo=124)</li>
+          <li><span class="fn">live_browser_load</span>("909 Core Kit", new_track=true)</li>
+          <li><span class="fn">live_clip_write_pattern</span>(track="Drums", repeat=8)</li>
+          <li><span class="fn">live_browser_load</span>("Sub Bass", new_track=true)</li>
+          <li><span class="fn">live_clip_write_pattern</span>(track="Bass", step="1/8")</li>
+          <li><span class="fn">live_browser_load</span>("Warm Analog Pad", new_track=true)</li>
+          <li><span class="fn">live_clip_write_chords</span>("Am7 Fmaj7 Cmaj7 G")</li>
+          <li><span class="fn">live_mixer_set_many</span>(-6 dB, -9 dB, -15 dB)</li>
+          <li><span class="fn">live_scene_fire</span>(scene="Groove")</li>
+        </ol>
+        <div class="session" aria-label="Live's Session View">
+          <div class="head" data-after="1" data-color="c-orange">Drums</div>
+          <div class="head" data-after="3" data-color="c-violet">Bass</div>
+          <div class="head" data-after="5" data-color="c-cyan">Pad</div>
+          <div class="clip" data-after="2" data-color="c-orange">909 Groove</div>
+          <div class="clip" data-after="4" data-color="c-violet">Off-beat Bass</div>
+          <div class="clip" data-after="6" data-color="c-cyan">Am7 Fmaj7 Cmaj7 G</div>
+          <div class="clip"></div><div class="clip"></div><div class="clip"></div>
+        </div>
+        <div class="demo-foot"><span>9 tool calls · each one undo step</span>
+          <a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/01-house-beat.md">See every call →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="result" aria-labelledby="result-title">
+  <div class="wrap">
+    <h2 id="result-title">Not a mock-up: this is what it built</h2>
+    <p class="sub">Screenshots of Ableton Live 12.4.5 after examples 1, 5 and 6, built through
+      LiveBridge alone: a drum pattern mapped onto the 909 kit's pads, an off-beat bass,
+      voice-led chords, a clap roll into the drop, a 64-bar arrangement with locators, and a
+      low cut on the pad.</p>
+    <div class="shots">
+      <figure class="shot">
+        <a href="assets/live-session.png"><img src="assets/live-session.png" alt="Ableton Live's Session View with Drums, Bass and Pad tracks, the scenes Intro, Build, Drop and Break, and a clap roll in the clip editor" width="2880" height="1596" loading="lazy"></a>
+        <figcaption>Session View: the beat from example 1 with the song's sections as scenes; the clap roll into the drop in the clip editor.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="assets/live-arrangement.png"><img src="assets/live-arrangement.png" alt="Ableton Live's Arrangement View with seven song sections, their locators, and an EQ Eight low cut on the pad" width="2880" height="1596" loading="lazy"></a>
+        <figcaption>Arrangement View: intro, build, drop, break, build, drop and outro, laid out in one call; below, the pad's macros and its 150 Hz low cut.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="examples" class="alt" aria-labelledby="examples-title">
+  <div class="wrap">
+    <h2 id="examples-title">What you can ask</h2>
+    <p class="sub">Every example shows the prompt, each tool call Claude makes and what Live
+      answers. Seven of the eight were run against a real Live 12.4.5; the two-computer setup
+      needs a second machine.</p>
+    <div class="cards">
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/01-house-beat.md">
+        <span class="num">EXAMPLE 1</span>
+        <span class="quote">Make an 8-bar house beat at 124 BPM with a 909 kit</span>
+        <span class="what">Drum patterns by pad name, presets from the browser, a bassline, chords, levels in dB.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/02-chords-bass-arp.md">
+        <span class="num">EXAMPLE 2</span>
+        <span class="quote">Write a sad progression in D minor with a bassline and an arp, and check they fit</span>
+        <span class="what">Roman numerals, arpeggios, and a theory check that finds a clash and fixes it.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/03-serum-2-reese-bass.md">
+        <span class="num">EXAMPLE 3</span>
+        <span class="quote">Load Serum 2 and design a dark Reese bass</span>
+        <span class="what">120 Serum parameters without clicking Configure, macros, an LFO on the filter.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/04-splice-samples.md">
+        <span class="num">EXAMPLE 4</span>
+        <span class="quote">Find a rolling hi-hat loop on Splice and put it on a new track</span>
+        <span class="what">Splice's official MCP server searches and downloads; LiveBridge imports and warps.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/05-song-structure.md">
+        <span class="num">EXAMPLE 5</span>
+        <span class="quote">Turn this loop into a full track with a build-up and a breakdown</span>
+        <span class="what">Scenes, a clap roll, a filter sweep, the whole arrangement in one call, locators.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/06-mix-check.md">
+        <span class="num">EXAMPLE 6</span>
+        <span class="quote">Check my mix against my reference track</span>
+        <span class="what">Meters, a bounce, LUFS and spectrum comparison, EQ, side-chain, limiter.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/07-two-computers.md">
+        <span class="num">EXAMPLE 7</span>
+        <span class="quote">Connect to Live on my Windows PC</span>
+        <span class="what">LAN mode with a token, discovery, samples sent to the Live machine.</span>
+      </a>
+      <a class="card" href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/08-escape-hatches.md">
+        <span class="num">EXAMPLE 8</span>
+        <span class="quote">Rename every clip after its track and scene</span>
+        <span class="what">The whole Live Object Model, batches as one undo step, Python inside Live.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <h2 id="features-title">Why LiveBridge</h2>
+    <p class="sub">Not a demo that plays a few notes, but everything Live's API allows, with tools
+      built around how producers actually work.</p>
+    <div class="features">
+      <div class="feature" style="--c: var(--orange)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>All of Live</h3>
+        <p>168 tools backed by 200 commands: transport, tracks, clips, notes, devices, racks, browser, automation, arrangement, routing, recording. Plus the full Live Object Model for anything else.</p>
+      </div>
+      <div class="feature" style="--c: var(--violet)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>Tools that think like a producer</h3>
+        <p>Drum patterns written against the kit's pad names, chords from symbols or Roman numerals with voice leading, arps, basslines, swing, humanize, filter sweeps and LFOs, mixing in dB.</p>
+      </div>
+      <div class="feature" style="--c: var(--cyan)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 12h2l3-7 4 14 4-10 3 5h4"/></svg></div>
+        <h3>Ears, of a kind</h3>
+        <p>A music-theory check (key, chords, clashes between parts) and audio analysis (LUFS, spectrum, stereo, tempo, key), also against your reference track.</p>
+      </div>
+      <div class="feature" style="--c: var(--orange)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 12 16 7"/><path d="M12 2v2M22 12h-2M4 12H2"/></svg></div>
+        <h3>Serum 2, fully controllable</h3>
+        <p>Big VST3 plug-ins expose none of their knobs to Live until you click Configure. LiveBridge exposes up to 128 of them for Claude, no clicking needed.</p>
+      </div>
+      <div class="feature" style="--c: var(--violet)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg></div>
+        <h3>Splice in the same conversation</h3>
+        <p>Claude searches and downloads with Splice's official MCP server, then LiveBridge puts the sample where you want it: a slot, the arrangement, a Simpler or a drum pad.</p>
+      </div>
+      <div class="feature" style="--c: var(--cyan)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="4" width="8" height="6" rx="1.5"/><rect x="14" y="14" width="8" height="6" rx="1.5"/><path d="M6 10v4a2 2 0 0 0 2 2h6"/></svg></div>
+        <h3>Two computers</h3>
+        <p>Claude on your laptop, Live on the studio PC, or the other way round. Discovery on your network, a token on every request, files sent across automatically.</p>
+      </div>
+      <div class="feature" style="--c: var(--orange)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></div>
+        <h3>Safe to try</h3>
+        <p>Every change is one undo step. Local-only by default, with a token; LAN mode is opt-in, and Python inside Live can be switched off.</p>
+      </div>
+      <div class="feature" style="--c: var(--violet)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Tested</h3>
+        <p>1,500+ unit tests against a simulated Live on macOS, Windows and Linux, plus end-to-end checks on a real Live 12.4.5.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt" aria-labelledby="how-title">
+  <div class="wrap">
+    <h2 id="how-title">How it works</h2>
+    <p class="sub">A small MIDI Remote Script runs inside Live; an MCP server turns it into tools
+      Claude can use. Nothing else is installed into Live.</p>
+    <div class="flow">
+      <div class="node"><small>Your AI app</small><h3>Claude</h3><p>Claude Code, Claude Desktop or any MCP client. Splice's MCP server can sit next to it.</p></div>
+      <div class="arrow"><div><span>⇄</span>MCP · stdio</div></div>
+      <div class="node"><small>livebridge-mcp</small><h3>MCP server</h3><p>168 validated tools, a reconnecting client and network discovery. Python 3.10+.</p></div>
+      <div class="arrow"><div><span>⇄</span>TCP · JSON · token</div></div>
+      <div class="node"><small>Inside Ableton Live</small><h3>Remote Script</h3><p>Runs every command on Live's main thread against the Live Object Model. One undo step each.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" aria-labelledby="install-title">
+  <div class="wrap two">
+    <div>
+      <h2 id="install-title">Install in a few minutes</h2>
+      <p class="sub">You need Ableton Live 12, Python 3.10 or newer, and Claude Code or Claude
+        Desktop. The installer does the rest: the Remote Script, the MCP server, a random token,
+        registration with Claude (and Splice), and the LiveBridge skill.</p>
+      <div class="tabs" role="tablist" aria-label="Operating system">
+        <button class="tab" role="tab" id="tab-mac" aria-controls="panel-mac" data-os="macos">macOS</button>
+        <button class="tab" role="tab" id="tab-win" aria-controls="panel-win" data-os="windows">Windows</button>
+      </div>
+      <div class="code" id="panel-mac" role="tabpanel" aria-labelledby="tab-mac">
+<pre id="code-mac">git clone https://github.com/valentijnh/livebridge-ableton-mcp.git LiveBridge
+cd LiveBridge
+./installers/install.sh</pre>
+        <button class="copy" type="button" data-copy="code-mac">Copy</button>
+      </div>
+      <div class="code" id="panel-win" role="tabpanel" aria-labelledby="tab-win" hidden>
+<pre id="code-win">git clone https://github.com/valentijnh/livebridge-ableton-mcp.git LiveBridge
+cd LiveBridge
+powershell -ExecutionPolicy Bypass -File installers\install.ps1</pre>
+        <button class="copy" type="button" data-copy="code-win">Copy</button>
+      </div>
+      <p class="note">No git? Download the zip from the
+        <a href="https://github.com/valentijnh/livebridge-ableton-mcp/releases/latest">latest release</a>,
+        unzip it into a folder you keep, and run the same installer.</p>
+    </div>
+    <div>
+      <ol class="steps">
+        <li><div><strong>Start Live</strong> and pick <em>LiveBridge</em> under
+          Preferences → Link, Tempo &amp; MIDI → Control Surface (Input and Output: None).
+          Live's status bar says <code>LiveBridge … ready on port 9880</code>.</div></li>
+        <li><div><strong>Restart Claude Desktop</strong> or open a new Claude Code session.</div></li>
+        <li><div><strong>Ask:</strong> <em>“run live_status”</em>, then try
+          <em>“make me a beat”</em>.</div></li>
+      </ol>
+      <p class="note more">Flags, manual setup, a second computer and troubleshooting:
+        <a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/INSTALL.md">install guide</a> ·
+        <a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/TROUBLESHOOTING.md">troubleshooting</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="alt" aria-labelledby="tools-title">
+  <div class="wrap">
+    <h2 id="tools-title">168 tools, 22 areas</h2>
+    <p class="sub">Named <code>live_&lt;area&gt;_&lt;verb&gt;</code>, validated before anything changes,
+      and forgiving about input: tracks by name, positions as <code>17.1.1</code>, values the way the
+      knob shows them (<code>"-6 dB"</code>, <code>"1/8"</code>, <code>"800 Hz"</code>).</p>
+    <div class="areas">
+      <div class="area">Transport and tempo <b>10</b></div>
+      <div class="area">Tracks <b>10</b></div>
+      <div class="area">Mixer <b>6</b></div>
+      <div class="area">Routing and side-chain <b>4</b></div>
+      <div class="area">Recording and resampling <b>8</b></div>
+      <div class="area">Clips <b>12</b></div>
+      <div class="area">Notes, patterns, chords <b>10</b></div>
+      <div class="area">Arrangement <b>9</b></div>
+      <div class="area">Locators and time <b>8</b></div>
+      <div class="area">Scenes <b>8</b></div>
+      <div class="area">Devices and parameters <b>20</b></div>
+      <div class="area">Racks, Drum Racks, Simpler <b>8</b></div>
+      <div class="area">Plug-ins <b>6</b></div>
+      <div class="area">Serum 2 and VST3 racks <b>3</b></div>
+      <div class="area">Browser <b>6</b></div>
+      <div class="area">Samples <b>4</b></div>
+      <div class="area">Splice <b>3</b></div>
+      <div class="area">Automation <b>9</b></div>
+      <div class="area">Theory and audio analysis <b>2</b></div>
+      <div class="area">View and selection <b>7</b></div>
+      <div class="area">Live Object Model <b>6</b></div>
+      <div class="area">Connection and batches <b>9</b></div>
+    </div>
+    <p class="more"><a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/TOOLS.md">Full tool reference →</a></p>
+  </div>
+</section>
+
+<section id="prompts" aria-labelledby="prompts-title">
+  <div class="wrap">
+    <h2 id="prompts-title">Prompts to try</h2>
+    <p class="sub">Plain sentences, with the names you see in Live.</p>
+    <div class="prompts">
+      <div class="prompt"><span>Give me a boom-bap beat at 90 BPM with swung hats.</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>Write Am7 – Fmaj7 – C – G on a warm pad with smooth voice leading.</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>What key is the clip on the Keys track in, and which chords does it play?</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>Side-chain the bass to the kick.</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>Sweep the filter on the pad up through the build.</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>Turn my scenes into a song: intro 8, verse 16, chorus 16, outro 8.</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>Load Serum 2 on a new track and make a short, bright pluck.</span><button type="button" data-copy>Copy</button></div>
+      <div class="prompt"><span>Is anything clipping? Read the meters while the drop plays.</span><button type="button" data-copy>Copy</button></div>
+    </div>
+    <p class="more"><a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/examples/prompts.md">100+ more prompts →</a></p>
+  </div>
+</section>
+
+<section id="faq" class="alt" aria-labelledby="faq-title">
+  <div class="wrap">
+    <h2 id="faq-title">FAQ</h2>
+    <div class="faq">
+      <details><summary>Which Ableton Live versions does LiveBridge support?</summary>
+        <p>Ableton Live 12, in every edition. It was built and verified against Live 12.4.5 Suite. Live 11 is not supported: the Remote Script is written for the Python 3.11 that Live 12 embeds.</p></details>
+      <details><summary>Do I need Max for Live?</summary>
+        <p>No. LiveBridge is a MIDI Remote Script, the same kind of script that drives Push and other controllers, so it runs in every edition of Live 12.</p></details>
+      <details><summary>Which AI apps can use LiveBridge?</summary>
+        <p>Claude Code and Claude Desktop, which the installer sets up together with the LiveBridge skill, and any other MCP client that can start a local (stdio) server.</p></details>
+      <details><summary>Can Claude hear my music?</summary>
+        <p>Not directly. Claude reads what Live knows (notes, devices, parameters, levels), checks harmony with a music-theory analysis and measures bounced audio: loudness, spectrum, stereo, tempo and key. Your ears still have the final say.</p></details>
+      <details><summary>Is LiveBridge free?</summary>
+        <p>Yes, free and open source under the MIT license. You need Ableton Live 12 and a Claude plan; Splice is optional (searching is free, downloads use your Splice credits).</p></details>
+      <details><summary>Does it work on Windows, and across two computers?</summary>
+        <p>Yes. It runs on macOS and Windows, and Claude and Live can run on two different computers in your network, Mac and PC mixed.</p></details>
+      <details><summary>Will it mess up my Live set?</summary>
+        <p>Every change Claude makes is one undo step in Live. Claude asks before deleting or overwriting your material and doesn't start playback or recording unless asked. Save your set yourself: Live's API cannot save.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp">GitHub</a>
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp/tree/main/examples">Examples</a>
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/TOOLS.md">Tool reference</a>
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/INSTALL.md">Install guide</a>
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp/releases">Releases</a>
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp/issues">Issues</a>
+      <a href="https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/SECURITY.md">Security</a>
+    </nav>
+    <p>LiveBridge is free software under the MIT license, made by <a href="https://github.com/valentijnh">@valentijnh</a>.
+      Ableton and Live are trademarks of Ableton AG. Claude is a trademark of Anthropic. Serum is a
+      trademark of Xfer Records; Splice is a trademark of Splice. LiveBridge is an independent project,
+      not affiliated with or endorsed by any of them.</p>
+  </div>
+</footer>
+</body>
+</html>

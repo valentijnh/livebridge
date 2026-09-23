@@ -33,3 +33,9 @@ stdlib only, Python 3.11 inside Live) + an MCP server (`mcp_server/livebridge_mc
   `.claude/skills/livebridge/PRODUCTION.md` (resource `livebridge://production`); a test checks
   that every `live_*` name in it exists.
 - Cross-platform (Windows + macOS) always. No third-party imports inside `remote_script/`.
+- Public face (GitHub `valentijnh/livebridge-ableton-mcp`, public): `examples/` (walkthroughs run
+  against real Live; `tests/test_examples.py` checks every `live_*` call and argument in their
+  ```python blocks and every tool name in README/site), `site/` (GitHub Pages, deployed by
+  `.github/workflows/pages.yml`; screenshots and the social image live in `docs/images`, their
+  HTML source in `docs/images/src/card.html`). CI (`.github/workflows/tests.yml`) runs the suite
+  on macOS, Windows and Linux. Renaming a tool means updating those pages too.

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Troubleshooting guide
+    url: https://github.com/valentijnh/livebridge-ableton-mcp/blob/main/docs/TROUBLESHOOTING.md
+    about: Script not listed in Live, "not reachable", token, firewall and timeout problems.
+  - name: Examples and prompts
+    url: https://github.com/valentijnh/livebridge-ableton-mcp/tree/main/examples
+    about: What you can ask Claude, with the tool calls it makes.
+  - name: Report a security vulnerability
+    url: https://github.com/valentijnh/livebridge-ableton-mcp/security/advisories/new
+    about: Please report security problems privately.
