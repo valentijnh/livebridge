@@ -18,6 +18,7 @@
   <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-3776AB">
   <img alt="macOS and Windows" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows-555555">
   <a href="https://modelcontextprotocol.io"><img alt="Model Context Protocol server" src="https://img.shields.io/badge/MCP-server-D97757"></a>
+  <a href="https://buymeacoffee.com/valentijnh"><img alt="Buy me a coffee" src="https://img.shields.io/badge/buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black"></a>
 </p>
 
 <p align="center">
@@ -305,7 +306,8 @@ spectrum, stereo, tempo and key. Your ears still have the final say.
 
 **Is it free?**
 LiveBridge is free and open source (MIT). You need Ableton Live 12 and a Claude plan; Splice is
-optional (searching is free, downloads use your Splice credits).
+optional (searching is free, downloads use your Splice credits). If it helps your music, you can
+[buy me a coffee](https://buymeacoffee.com/valentijnh).
 
 **Does it work on Windows? With Live and Claude on different computers?**
 Yes to both: macOS and Windows, and Claude and Live can run on two computers in your network,
@@ -350,6 +352,12 @@ parsing (tracks, devices, colours, times, paging) lives in `remote_script/LiveBr
 After adding or changing a tool or command, regenerate the reference:
 `.venv/bin/python installers/gen_tools_doc.py` (`tests/test_consistency.py` fails when it is stale).
 More in [CONTRIBUTING.md](CONTRIBUTING.md); changes per version in [CHANGELOG.md](CHANGELOG.md).
+
+## Support
+
+LiveBridge is free. If it saves you time or sparks a track, you can
+[buy me a coffee](https://buymeacoffee.com/valentijnh) ☕. A star on GitHub, a bug report or a note
+about what you made with it helps just as much.
 
 ## License
 
