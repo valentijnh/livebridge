@@ -20,9 +20,11 @@ More: [100+ prompts to copy](prompts.md) · [Scripting Live from Python without 
 
 ## How these were made
 
-Examples 1–6 and 8 were run against **Ableton Live 12.4.5 Suite on macOS** with LiveBridge 1.0
-(September 2026). The JSON under the calls is real output, shortened. File names in the Splice
-example are placeholders, and example 7 needs two computers, so it wasn't re-run for this page.
+The LiveBridge calls in examples 1–6 and 8 were run against **Ableton Live 12.4.5 Suite on
+macOS** with LiveBridge 1.0 (September 2026). The JSON under the calls is real output, shortened.
+Not re-run for these pages: the steps that play audio (the meters and the bounce in example 6),
+Splice's own search and download (example 4, which needs a Splice login; its file names are
+placeholders) and example 7, which needs two computers.
 [`tests/test_examples.py`](../tests/test_examples.py) checks on every commit that each tool
 and argument used on these pages exists.
 
