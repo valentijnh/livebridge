@@ -13,8 +13,8 @@ To update: build a new ZIP, unzip it over the old folder (or into a new one) and
 installer -- it keeps the token and every setting.
 
 The ZIP holds exactly what the installers and docs need -- ``remote_script``, ``mcp_server``,
-``installers``, ``docs``, ``tests``, ``.claude/skills``, README/LICENSE -- and never caches,
-virtual environments, git data, build output or developer configs (``config.json`` /
+``installers``, ``docs``, ``tests``, ``.claude/skills``, ``examples``, README/LICENSE/CHANGELOG --
+and never caches, virtual environments, git data, build output or developer configs (``config.json`` /
 ``config.local.json`` inside the Remote Script, which hold a token). File modes are kept, so
 ``installers/install.sh`` stays executable after unzipping on macOS.
 """
@@ -35,7 +35,8 @@ TOP_FOLDER = "LiveBridge"
 
 #: Top-level entries that go into the bundle (missing ones are skipped).
 INCLUDE = ("remote_script", "mcp_server", "installers", "docs", "tests", ".claude/skills",
-           "README.md", "LICENSE", "CLAUDE.md", "PLAN.md")
+           "examples", "README.md", "LICENSE", "CHANGELOG.md", "SECURITY.md", "CONTRIBUTING.md",
+           "CLAUDE.md", "PLAN.md")
 #: Directory names never packed, wherever they are.
 EXCLUDE_DIRS = ("__pycache__", ".git", ".venv", "venv", ".pytest_cache", ".mypy_cache",
                 ".ruff_cache", "build", "dist", ".livebridge_work", ".idea", ".vscode")
