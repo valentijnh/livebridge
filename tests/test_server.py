@@ -132,7 +132,8 @@ def test_idle_connections_are_closed(echo_server, tcp_client):
     assert client.request("echo", {})["ok"] is True
     with pytest.raises(EOFError):
         client.receive()
-    assert server.client_count == 0
+    # the client thread unregisters itself just after closing the socket
+    assert _wait_for(lambda: server.client_count == 0)
 
 
 def test_executor_exceptions_become_internal_errors(echo_server, tcp_client):
