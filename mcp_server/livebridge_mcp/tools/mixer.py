@@ -339,15 +339,17 @@ def register(mcp: Any, bridge: BridgeClient) -> None:
         if seconds <= 0:
             return bridge_call(bridge, cmd, args)
         snapshots: list[dict[str, Any]] = []
-        started = time.monotonic()
+        # perf_counter, not monotonic: on Windows before Python 3.13 monotonic() ticks every
+        # ~16 ms, so the loop would keep sleeping a few ms and re-sampling until it catches up
+        started = time.perf_counter()
         while len(snapshots) < MAX_METER_SAMPLES:
             snap = bridge_call(bridge, cmd, args)
             if isinstance(snap, dict) and "error" in snap and "type" in snap:
                 return snap if not snapshots else {**aggregate_meters(
-                    snapshots, time.monotonic() - started), "error": snap["error"]}
+                    snapshots, time.perf_counter() - started), "error": snap["error"]}
             snapshots.append(snap)
-            elapsed = time.monotonic() - started
+            elapsed = time.perf_counter() - started
             if elapsed >= seconds:
                 break
             time.sleep(min(0.1, max(0.0, seconds - elapsed)))
-        return aggregate_meters(snapshots, time.monotonic() - started)
+        return aggregate_meters(snapshots, time.perf_counter() - started)
